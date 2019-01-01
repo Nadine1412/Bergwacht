@@ -3,6 +3,8 @@ $vorname = $_POST['vorname'];
 $nachname = $_POST['name'];
 $maid = $_POST['maid'];
 $position = $_POST['position'];
+$passwort = $_POST['passwort'];
+$password_encrypt = password_hash($passwort, PASSWORD_DEFAULT);
 
 /* DB Verbindung herstellen */
 define("DB_HOST", "localhost");
@@ -21,7 +23,7 @@ $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error()
  $result = mysqli_num_rows($check); //Prüfen ob Eintrag bereits vorhanden
  if ($result) {
      # Mitglied bereits vorhanden
-    echo "Mitglied bereits vorhanden. Bitte erneut Daten eingeben.";
+   // @ToDo Ausgabe, dass Mitglied bereits vorhanden ist.
     header('location: Registrierung Bergwacht.html');
     exit();
  } else {
@@ -30,7 +32,8 @@ $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error()
              SET name='$nachname',
              vorname='$vorname',
              mid='$maid',
-             position='$position';";
+             position='$position',
+             passwort='$password_encrypt';";
     $eintragen = mysqli_query($db, $query2);
 
     if($eintragen)
