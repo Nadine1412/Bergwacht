@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html lang="de">
   <head>
@@ -9,7 +9,7 @@
 	<title>Login</title>
 	  </head>
 	  <body>
-		  <script language="javascript">
+		<!--  <script language="javascript">
 			function checkLogin(form) {
 				var userId = document.forms["login"]["userId"].value;
 				var pw = document.forms["login"]["pass"].value;
@@ -22,7 +22,7 @@
 				} else {  alert("Invalid UserID")
 				}
 			}
-	</script>
+	</script> -->
 	  	<section id="login" class="login">
 		<div class="container">
 		<div class="row">
@@ -33,7 +33,7 @@
 		</div>
 		<div class="col-md-6">
 				<br><br><br><br><br><br>
-		<form name="login">
+		<form name="login" method ="POST" action="anmeldungVerarbeiten.php">
 		<legend>Login</legend>
 			<label>Name :</label>
 			<div class="row">
@@ -48,7 +48,8 @@
 		</div>
 		</div>
 		<p></p>
-			<input type="button" value="Login" onClick="checkLogin(this.form)">
+			<!--<input type="button" value="Login" onClick="checkLogin(this.form)">-->
+			<button type="submit">Login</button>
 			<input type="button" value="Registrierung" onClick="window.location.href='Registrierung Bergwacht.html'">
 		</form>
         <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
