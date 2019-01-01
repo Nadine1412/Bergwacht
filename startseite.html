@@ -2,16 +2,57 @@
 <html lang="de">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	//	<link rel="Stylesheet" type="text/css" href="bootstrap.css">
+	//	<link rel="Stylesheet" type="text/css" href="style.css">
+		<style>
+				ul {
+					list-style-type: none;
+					margin: 0;
+					padding: 0;
+					width: 200px;
+					background-color: #f1f1f1;
+				}
+				
+				li a {
+					display: block;
+					color: #000;
+					padding: 8px 16px;
+					text-decoration: none;
+				}
+				
+				li a.active {
+					background-color: #4CAF50;
+					color: white;
+				}
+				
+				li a:hover:not(.active) {
+					background-color: #555;
+					color: white;
+				}
+				</style>
     <title>Startseite</title>
   </head>
   <body>
+		<nav>
+			<ul>
+				<li><a href="#">Profil</a>
+					<ul>
+						<li><a href="#">Profil anzeigen</a></li>
+						<li><a href="#">Profil ändern</a></li>
+					</ul>
+				</li>
+				<li><a href="Ausbildungen Bergwacht.html">Ausbildung</a></li>
+				<li><a href="Inventar Bergwacht.html">Inventar</a></li>
+				<li><a href="Mitglieder Bergwacht.html">Mitglieder</a></li>  
+				</ul>
+		</nav>
 	<tr>
 		<td colspan="2">
 			<center>
 				<h1>
 					<i>
-						<b>Sie haben sich erfolgreich angemeldet.</b> 
+						<b>Herzlich Willkommen bei der Ortsgruppe Furtwangen!</b> 
 					</i>
 				</h1>
 			</center>
@@ -19,3 +60,4 @@
 	</tr>
   </body>
 </html>
+
