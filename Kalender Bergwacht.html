@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<link rel="Stylesheet" type="text/css" href="bootstrap.css">
+<link rel="Stylesheet" type="text/css" href="style.css">
+<head>
+    <title>Kalender</title>
+    <style>
+            ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                background-color: #333;
+                }
+            
+            li {
+                float: left;
+                }
+                    
+            li a {
+                display: block;
+                color:white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                }
+                                    
+            li a:hover:not(.active) {
+                background-color: #111;
+                }
+    
+            .active{
+                background-color: #4caf50
+                }        
+        </style>
+    
+</head>
+<body>
+    <div id="Navigationsbereich">
+            <ul>
+                <li><a href="Profil anzeigen.html">Profil</a>
+                    <ul>
+                        <li><a href="Profil anzeigen.html">Profil anzeigen</a></li>
+                        <li><a href="Profil ändern.html">Profil ändern</a></li>
+                    </ul>
+                </li>
+                <li><a href="Ausbildungen Bergwacht.html">Ausbildung</a></li>
+                <li><a href="Inventar Bergwacht.html">Inventar</a></li>
+                <li><a href="Mitglieder Bergwacht.html">Mitglieder</a></li>
+                <li><a href="Chars Bergwacht.html">Charts</a></li>
+                <li><a class="active" href="Kalender Bergwacht.html">Kalender</a></li>
+            </ul>
+    </div id="Inhaltsbereich">
+    <iframe src="https://calendar.google.com/calendar/embed?src=lnf3vt0096phk41h4vvscmub6s%40group.calendar.google.com&ctz=Europe%2FBerlin" 
+        style="border: 0" 
+        width="800" 
+        height="600" 
+        frameborder="0" 
+        scrolling="no">
+    </iframe>
+    <a target="_blank" href="https://calendar.google.com/event?action=TEMPLATE&amp;tmeid=MWVjOGwxbWFoZDhubHJhcGtjMXVhMDU2Y2UgbG5mM3Z0MDA5NnBoazQxaDR2dnNjbXViNnNAZw&amp;tmsrc=lnf3vt0096phk41h4vvscmub6s%40group.calendar.google.com">
+        <!--<img border="0" src="https://www.google.com/calendar/images/ext/gc_button1_de.gif">-->Termin hinzufügen</a>
+    <div>
+
+    </div>
+    
+</body>
+</html>
