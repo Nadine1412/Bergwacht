@@ -1,63 +1,66 @@
 <!DOCTYPE html>
-<html lang="de">
-  <head>
-    <meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	//	<link rel="Stylesheet" type="text/css" href="bootstrap.css">
-	//	<link rel="Stylesheet" type="text/css" href="style.css">
-		<style>
-				ul {
-					list-style-type: none;
-					margin: 0;
-					padding: 0;
-					width: 200px;
-					background-color: #f1f1f1;
-				}
-				
-				li a {
-					display: block;
-					color: #000;
-					padding: 8px 16px;
-					text-decoration: none;
-				}
-				
-				li a.active {
-					background-color: #4CAF50;
-					color: white;
-				}
-				
-				li a:hover:not(.active) {
-					background-color: #555;
-					color: white;
-				}
-				</style>
-    <title>Startseite</title>
-  </head>
-  <body>
-		<nav>
-			<ul>
-				<li><a href="#">Profil</a>
-					<ul>
-						<li><a href="#">Profil anzeigen</a></li>
-						<li><a href="#">Profil ändern</a></li>
-					</ul>
-				</li>
-				<li><a href="Ausbildungen Bergwacht.html">Ausbildung</a></li>
-				<li><a href="Inventar Bergwacht.html">Inventar</a></li>
-				<li><a href="Mitglieder Bergwacht.html">Mitglieder</a></li>  
-				</ul>
-		</nav>
-	<tr>
-		<td colspan="2">
-			<center>
-				<h1>
-					<i>
-						<b>Herzlich Willkommen bei der Ortsgruppe Furtwangen!</b> 
-					</i>
-				</h1>
-			</center>
-		</td>
-	</tr>
-  </body>
+<html>
+<meta charset="UTF-8">
+<link rel="Stylesheet" type="text/css" href="bootstrap.css">
+<link rel="Stylesheet" type="text/css" href="style.css">
+<head>
+    <title>Home</title>
+    <style>
+            ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                background-color: #333;
+                }
+            
+            li {
+                float: left;
+                }
+                    
+            li a {
+                display: block;
+                color:white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                }
+                                    
+            li a:hover:not(.active) {
+                background-color: #111;
+                }
+    
+            active{
+                background-color: #4caf50
+                }        
+        </style>
+</head>
+<body>
+    <div id="Navigationsbereich">
+            <ul>
+				<li><a class="active" href="startseite.html">Home</a></li>
+                <li><a href="Profil anzeigen.html">Profil</a>
+                    <ul>
+                        <li><a href="Profil anzeigen.html">Profil anzeigen</a></li>
+                        <li><a href="Profil ändern.html">Profil ändern</a></li>
+                    </ul>
+                </li>
+                <li><a href="Ausbildungen Bergwacht.html">Ausbildung</a></li>
+                <li><a href="Inventar Bergwacht.html">Inventar</a></li>
+                <li><a href="Mitglieder Bergwacht.html">Mitglieder</a></li>
+                <li><a href="Charts Bergwacht.html">Charts</a></li>
+				<li><a href="Kalender Bergwacht.html">Kalender</a></li>
+            </ul>
+	</div>
+	<div id="inhaltsbereich">
+		<br>Hier ist Platz für News!</br>
+		<form action="newsVerarbeiten.php" method="post"> 
+				<div>  
+				   <label for="text">Anmerkung</label>
+				   <textarea id="news" name="text" cols="35" rows="4"></textarea> 	
+				   <input type="submit" value="Senden" />
+				</div> 
+		</form> 
+	</div>
+</body>
 </html>
-
