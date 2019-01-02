@@ -22,9 +22,51 @@
             tr:nth-child(even) {
                 background-color: #dddddd;
             }
+            ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                background-color: #333;
+                }
+            
+            li {
+                float: left;
+                }
+                    
+            li a {
+                display: block;
+                color:white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                }
+                                    
+            li a:hover:not(.active) {
+                background-color: #111;
+                }
+    
+            .active{
+                background-color: #4caf50
+                }        
+       
             </style>
     </head>
         <body>
+                <div id="Navigationsbereich">
+                        <ul>
+                            <li><a href="Profil anzeigen">Profil</a>
+                                <ul>
+                                    <li><a href="Profil anzeigen.html">Profil anzeigen</a></li>
+                                    <li><a href="Profil ändern.html">Profil ändern</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="Ausbildungen Bergwacht.html">Ausbildung</a></li>
+                            <li><a href="Inventar Bergwacht.html">Inventar</a></li>
+                            <li><a class="active" href="Mitglieder Bergwacht.html">Mitglieder</a></li>
+                            <li><a href="Chars Bergwacht.html">Charts</a></li>
+                        </ul>
+                </div>
             <section id="charts" class="charts">
             <br><br><br><br><br><br>
             <center><h2>Mitglieder</h2></center>
