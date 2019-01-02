@@ -25,7 +25,7 @@ if($passwort_input == 'pw'){
     header('location: Charts Bergwacht.html');
 }
 
-/*if ($pass_db) 
+if ($pass_db) 
 {
     //DB Passwort mit eingebenem Passwort vergleichen
     if ( password_verify($pass_db, $passwordI_encrypt) ) {
@@ -44,6 +44,6 @@ else
     // @ToDo Warnung mit UserId nicht richtig.
    // header('location: Anmeldung Bergwacht.html');
     echo "UserId nicht korrekt.";
-} */
+} 
 
 ?>
