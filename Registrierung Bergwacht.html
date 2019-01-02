@@ -18,35 +18,48 @@
             <div class="col-md-6">
                 <form name="registrierungFormular" method="post" action="registrierungVerarbeiten.php">
                 <legend>Daten eingeben</legend>
-                    <label>Name :*</label>
-                    <div class="row">
+                <label>Name :*</label>
+                <div class="row">
                     <div class="col-md-7">
-                    <input type="text" name = "name" class="form-control" required>
+                        <input type="text" name = "name" class="form-control" required>
+                    </div>
                 </div>
-                </div>
-                    <label>Vorname :*</label>
-                    <div class="row">
+                <label>Vorname :*</label>
+                <div class="row">
                     <div class="col-md-7">
-                    <input type="text" name = "vorname" class="form-control" required>
+                        <input type="text" name = "vorname" class="form-control" required>
+                    </div>
                 </div>
+                <label>Geburtsdatum :*</label>
+                <div class="row">
+                    <div class="col-md-7">
+                        <input type="date" name = "birthday" class="form-control">
+                    </div>
                 </div>
+                <label>E-Mail :*</label>
+                <div class="row">
+                    <div class="col-md-7">
+                        <input type="email" name = "email" class="form-control">
+                    </div>
+                </div>
+                <!-- </div>
                     <label>MaID :*</label>
                     <div class="row">
                     <div class="col-md-7">
                     <input name="maid" type="text" class="form-control" required>
-                </div>
-                </div>
-                    <label>Position :*</label>
+                </div> -->
+                <!-- </div>
+                    <label>Rolle :*</label>
                     <div class="row">
                     <div class="col-md-7">
                     <input type="text" name = "position" class="form-control" required>
-                </div>
-                </div>
-                    <label>Passwort :*</label>
-                    <div class="row">
+                </div> -->
+                
+                <label>Passwort :*</label>
+                <div class="row">
                     <div class="col-md-7">
-                    <input type="text" name = "password" class="form-control" required>
-                </div>
+                        <input type="password" name = "password" class="form-control" required>
+                    </div>
                 </div>
                 <p></p>
                     <button type="submit">Registrieren</button>
