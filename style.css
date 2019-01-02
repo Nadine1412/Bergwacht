@@ -1,5 +1,6 @@
 
 
+
 .contact{
     color: rgb(255, 255, 255);
     position: relative;
@@ -22,7 +23,7 @@
     color: rgb(255, 255, 255);
 }
 .button{
-    background-color:orangered;
+  background-color:orangered;
   border: none;
   color: white;
   padding: 10px 25px;
@@ -33,3 +34,4 @@
   margin: 4px 2px;
   cursor: pointer;
 }
+
