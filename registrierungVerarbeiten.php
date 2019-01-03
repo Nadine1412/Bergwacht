@@ -3,8 +3,9 @@ $vorname = $_POST['vorname'];
 $nachname = $_POST['name'];
 $birthday = $_POST['birthday'];
 $email = $_POST['email'];
-// $maid = $_POST['maid'];
-// $position = $_POST['position'];
+$selectedRole = $_POST['roles'];
+$state = $_POST['state'];
+
 $password = $_POST['password'];
 $password_encrypt = password_hash($password, PASSWORD_DEFAULT);
 
@@ -16,7 +17,6 @@ define("DB_DATABASE", "bergwacht_db");
 
 $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error());
 
-
 // Überpruefen ob das Mitglied bereits vorhanden ist
  $query1 = "SELECT EMail FROM tbl_mitglied
             WHERE EMail LIKE '$email'"; 
@@ -27,19 +27,31 @@ $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error()
  if ($result) {
      # Mitglied bereits vorhanden
    // @ToDo Ausgabe, dass Mitglied bereits vorhanden ist.
-    header('location: Registrierung Bergwacht.html');
+    echo "Email bereits vorhanden";
     exit();
- } else {
+    } else {
+    // Aus der Datenbank wird zur zugehörigen Rolle die passende Rollen ID herausgesucht, um es später dem Mitarbeiter zuweisen zu können
+    $query2 = "SELECT R_ID FROM tbl_rolle
+    WHERE Rolle LIKE '$selectedRole'";
+
+    $r_id_result = mysqli_query($db, $query2);
+
+    while($r_id_db = $r_id_result->fetch_assoc())
+    {
+    $selectedRoleID = $r_id_db["R_ID"];
+    }
+
      # Mitglied hinzufügen
-    $query2="INSERT INTO tbl_mitglied
-             SET Name='$nachname',
+    $query3="INSERT INTO tbl_mitglied
+             SET 
+             Name='$nachname',
              Vorname='$vorname',
-            -- Birthday='$birthday',
+             GebDatum='$birthday',
              EMail= '$email',
-            --  mid='$maid',
-            --  position='$position',
+             Rolle='$selectedRoleID',
+             Status= '$state',
              Passwort='$password_encrypt';";
-    $eintragen = mysqli_query($db, $query2);
+    $eintragen = mysqli_query($db, $query3);
 
     if($eintragen)
     {
@@ -51,8 +63,8 @@ $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error()
     else
     {
          # weiterleitung auf die Registrierungsseite ...
-        header('location: Registrierung Bergwacht.html');
+       header('location: Registrierung Bergwacht.php');
         exit();
     }
- }
+ } 
 ?>
