@@ -1,4 +1,7 @@
 <?php
+//Session starten
+session_start();
+
 
 // $mid = $_POST['userId'];
 $email = $_POST['e_mail'];
@@ -32,22 +35,26 @@ if($password_input == 'pw'){
 if ($result->num_rows != 0) 
 {
     //DB Passwort mit eingebenem Passwort vergleichen
-    if ( password_verify($password_input, $pw) ) {
-    // Passwort war richtig.
-    header('location: Charts Bergwacht.html');
-    echo "Passwort korrekt.";
+    if ( password_verify($password_input, $pw) ) {   
+        // Passwort war richtig.
+        
+        // E-Mail Adresse wird als Session-Variable gespeichert
+        $_SESSION["LoggedEMail"] = $email;
+
+        header('location: Charts Bergwacht.html');
+        echo "Passwort korrekt.";
     } else {
-    //Passwort war falsch.
-   // header('location: Anmeldung Bergwacht.html');
-    echo "Passwort nicht korrekt.";
+        //Passwort war falsch.
+        // header('location: Anmeldung Bergwacht.html');
+        echo "Passwort nicht korrekt.";
     
-    }
+    }  
 }
 else 
 {
     // @ToDo Warnung mit UserId nicht richtig.
    // header('location: Anmeldung Bergwacht.html');
-    echo "UserId nicht korrekt.";
+    echo "E-Mail Adresse nicht korrekt.";
 } 
 
 ?>
