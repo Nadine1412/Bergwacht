@@ -31,9 +31,9 @@
         
         $resultRoleString = mysqli_query($db, $query2);
 
-        while($user_db2 = $resultRoleString->fetch_assoc())
+        while($role_db = $resultRoleString->fetch_assoc())
         {
-            $_SESSION["userRoleString"] = $user_db2["Rolle"];
+            $_SESSION["userRoleString"] = $role_db["Rolle"];
         }
         
         
