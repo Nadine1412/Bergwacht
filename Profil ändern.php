@@ -18,59 +18,118 @@ session_start();
 <html>
 <meta charset="UTF-8">
 <link rel="Stylesheet" type="text/css" href="bootstrap.css">
-<link rel="Stylesheet" type="text/css" href="style.css">
 <head>
     <title>Profil ändern</title>
     
     <style>
-        ul {
-            list-style-type: none;
+        .navbar{
+            width: 100%;
+            background-color: #6699cc;
+
+        }
+        ul{
+            text-align: left;
+            display: inline;
             margin: 0;
             padding: 0;
-            overflow: hidden;
-            background-color: #333;
-            }
-        
-        li {
-            float: left;
-            }
-                
-        li a {
-            display: block;
-            color:white;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-            }
-                                
-        li a:hover:not(.active) {
-            background-color: #111;
-            }
+            list-style: none;
+        }
 
-        .active{
-            background-color: #4caf50
-            }        
+        ul li{
+            font: bold 12px/18px sans-serif;
+            display: inline-block;
+            position:relative;
+            padding: 25px 20px;
+            background: #6699cc;
+
+        }
+        ul li a{
+            text-decoration: none;
+            padding: 25px 20px;
+            color:white;
+            font-size: 18px;
+        }          
+        ul li:hover{
+            background: #4dd0e1;
+            color:white;
+        }
+        ul li ul{
+            padding: 0;
+            position: absolute;
+            top: 70px;
+            left:0;
+            width:250px;
+            display:none;
+            visibility:hidden;
+        }
+
+        ul li ul li{
+            background: #00acc1;
+            display: block;
+        }
+        ul li ul li:hover{
+            background: #4dd0e1;
+
+        }
+        ul li:hover ul{
+            display: block;
+            opacity: 1;
+            visibility: visible;
+        }
+        ul ul ul li{
+            display: none;
+        }
+        ul ul li:hover li{
+            display: block;
+        }
+        ul ul ul{
+            left:100
+        }
+        body{
+            color: rgba(255, 255, 255, 0.16);
+            position: relative;
+            background: url("landscape-615429_1920.jpg") ;
+            background-size:cover;
+            
+        }
+        .container{
+            color: rgb(255, 255, 255);
+        }
     </style>
-    
-</head>
     <body>
-        <div id="Navigationsbereich">
+        <div class="navbar">
             <ul>
                 <li><a href="startseite.html">Home</a></li>
-                <li><a class="active" href="Profil anzeigen.php">Profil</a>
+                <li><a href="Profil anzeigen.php">Profil</a>
                     <ul>
-                        <li><a class="active" href="Profil anzeigen.php">Profil anzeigen</a></li>
-                        <li><a href="Profil ändern.php">Profil ändern</a></li>
+                        <li><a href="Profil anzeigen.php">Profil anzeigen</a></li>
+                        <li><a class="active" href="Profil ändern.php">Profil ändern</a></li>
                     </ul>
                 </li>
-                <li><a href="Ausbildungen Bergwacht.html">Ausbildung</a></li>
-                <li><a href="Inventar Bergwacht.html">Inventar</a></li>
+                <li><a href="Ausbildungen Bergwacht.html">Ausbildung</a>
+                    <ul>
+                        <li><a href="Anwesenheitsliste Bergwacht.html">Anwesenheitsliste</a></li>
+                    </ul>
+                </li>
+                <li><a href="Inventar Bergwacht.html">Inventar</a>
+                    <ul>
+                        <li><a href="Inventar pflegen.html">Inventar anlegen</a></li>
+                        <li><a href="Inventar ändern.html">Inventar ändern</a></li>
+                        <li><a href="Inventar anzeigen.php">Inventar anzeigen</a></li>
+                        <li><a href="Inventar loeschen.html">Inventar löschen</a></li>
+                    </ul>
+                </li>
                 <li><a href="Mitglieder Bergwacht.html">Mitglieder</a></li>
+                <ul>
+                    <li><a href="Mitglied loeschen.html">Mitglied löschen</a></li>
+                </ul>
                 <li><a href="Charts Bergwacht.html">Charts</a></li>
                 <li><a href="Kalender Bergwacht.html">Kalender</a></li>
             </ul>
-    </div>
-        <section id="contact" class="contact">
+            <input type="button" value="Logout" onClick="window.location.href='Anmeldung Bergwacht.html'">
+        </div>
+
+        <section id="container" class="container">
             <br><br><br><br><br><br>
             <div class="container">
             <div class="row">
@@ -170,7 +229,6 @@ session_start();
                 <p></p>
                     <button type="submit">Daten speichern</button>
                     <p></p>
-                <input type="button" value="Zurück" onClick="window.location.href='Profil anzeigen.php'">
                 </form>
             </div>
         </div>

@@ -89,7 +89,6 @@
                 <p></p>
                     <button type="submit">Registrieren</button>
                     <p></p>
-                <input type="button" value="Zurück" onClick="window.location.href='Anmeldung Bergwacht.html'">
                 </form>
             </div>
         </div>
