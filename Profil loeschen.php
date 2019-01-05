@@ -40,10 +40,10 @@
     <div id="Navigationsbereich">
             <ul>
                 <li><a href="startseite.html">Home</a></li>
-                <li><a class="active" href="Profil anzeigen.html">Profil</a>
+                <li><a class="active" href="Profil anzeigen.php">Profil</a>
                     <ul>
-                        <li><a class="active" href="Profil anzeigen.html">Profil anzeigen</a></li>
-                        <li><a href="Profil ändern.html">Profil ändern</a></li>
+                        <li><a class="active" href="Profil anzeigen.php">Profil anzeigen</a></li>
+                        <li><a href="Profil ändern.php">Profil ändern</a></li>
                     </ul>
                 </li>
                 <li><a href="Ausbildungen Bergwacht.html">Ausbildung</a></li>
