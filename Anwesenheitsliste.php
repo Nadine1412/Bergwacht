@@ -10,21 +10,19 @@
 
     $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error());
 
-    $query1 = "SELECT * FROM tbl_mitglied WHERE EMail LIKE '" . $_SESSION["LoggedEMail"] . "'";
+    $query1 = "SELECT * FROM tbl_ausbildungsthema WHERE EMail LIKE '" . $_SESSION["LoggedEMail"] . "'";
 
     $result = mysqli_query($db, $query1); //Query ausführen und ergebnis speichern
 
     while($user_db = $result->fetch_assoc())
     {
         // Laden der Userdaten aus der Datenbank
-        $_SESSION["userName"] =  $user_db["Name"];
-        $_SESSION["userForename"] =  $user_db["Vorname"];
-        $_SESSION["userMID"] =  $user_db["M_ID"];
-        $_SESSION["userBirthday"] =  $user_db["GebDatum"];
-        $_SESSION["userState"] =  $user_db["Status"];
-        $_SESSION["userEMail"] =  $user_db["EMail"];
-        $_SESSION["userRole"] = $user_db["Rolle"];
-        $_SESSION["userPasswordEnc"] = $user_db["Passwort"];        
+        $_SESSION["userAT_ID"] =  $user_db["Ausbildungsthema ID"];
+        $_SESSION["userDatum"] =  $user_db["Datum"];
+        $_SESSION["userDauer"] =  $user_db["Dauer"];
+        $_SESSION["userThema"] =  $user_db["Thema"];
+        $_SESSION["userA_ID"] =  $user_db["Ausbildungs ID"];
+        $_SESSION["userAusbilder"] =  $user_db["Ausbilder"];     
 
         // Abfrage der UserRole um die RollenID in die Bezeichnung umzuwandeln
         $query2 = "SELECT Rolle FROM tbl_rolle WHERE R_ID LIKE '" . $_SESSION["userRole"] . "' ";
@@ -112,7 +110,7 @@
             left:100
         }
         body{
-            color: rgba(255, 255, 255, 0.16);
+            color: rgba(255, 255, 255,255);
             position: relative;
             background: url("landscape-615429_1920.jpg") ;
             background-size:cover;
@@ -134,7 +132,9 @@
                             </li>
                             <li><a href="Ausbildungen Bergwacht.html">Ausbildung</a>
                                 <ul>
-                                    <li><a href="Anwesenheitsliste Bergwacht.html">Anwesenheitsliste</a></li>
+                                    <li><a href="Anwesenheitsliste.php">Anwesenheitsliste</a></li>
+                                    <li><a href="Ausbildung anzeigen.php">Ausbildung anzeigen</a></li>
+                                    <li><a href="Ausbildung ändern.php">Ausbildung ändern</a></li>
                                 </ul>
                             </li>
                             <li><a href="Inventar Bergwacht.html">Inventar</a>
@@ -155,63 +155,33 @@
                         <input type="button" value="Logout" onClick="window.location.href='Anmeldung Bergwacht.html'">
                     </div>
                     
-        <section id="container" class="container">
+       
             <br><br><br><br><br><br>
-            <div class="container">
-            <div class="row">
-            <div class="col-md-6">
-                <h2>Profil anzeigen</h2>
+                <h2>Anwesenheitsliste anzeigen</h2>
                
-                <p>Hier können Sie ihre Nutzerdaten einsehen und ändern.</p>
-            </div>
-            <div class="col-md-6">
-            <label>Mitarbeiter-ID:</label>
-                <div class="row">
-                    <div class="col-md-7">
-                        <input type="text" name = "ID"  value="<?php echo($_SESSION["userMID"]) ?>" class="form-control" readonly>
-                    </div>
-                </div>
-                <label>Name:</label>
-                <div class="row">
-                    <div class="col-md-7">
-                        <input type="text" name = "name" value="<?php echo( $_SESSION["userName"]) ?>" class="form-control" readonly>
-                    </div>
-                </div>
-                <label>Vorname:</label>
-                <div class="row">
-                    <div class="col-md-7">
-                        <input type="text" name = "vorname" value="<?php echo($_SESSION["userForename"]) ?>" class="form-control" readonly>
-                    </div>
-                </div>
-                <label>Geburtsdatum:</label>
-                <div class="row">
-                    <div class="col-md-7">
-                        <input type="date" name = "birthday" value="<?php echo($_SESSION["userBirthday"]) ?>" class="form-control" readonly>
-                    </div>
-                </div>
-                <label>E-Mail:</label>
-                <div class="row">
-                    <div class="col-md-7">
-                        <input type="email" name = "email" value="<?php echo($_SESSION["userEMail"]) ?>" class="form-control" readonly>
-                    </div>
-                </div>
-                <label>Rolle:</label>
-                <div class="row">
-                    <div class="col-md-7">
-                    <input type="text" name = "role" value="<?php echo($_SESSION["userRoleString"]) ?>" class="form-control" readonly>
-                    </div>
-                </div>
-                <label>Status:</label>
-                <div class="row">
-                    <div class="col-md-7">
-                    <input type="text" name = "state" value="<?php echo($_SESSION["userState"]) ?>" class="form-control" readonly>
-                    </div>
-                </div>
-                
+                <p>Hier können Sie die Anwesenheitsliste der Ausbildungen einsehen und als PDF exportieren.</p>
+                <table>
+                              <tr>
+                                <th>Ausbildungsthema ID:</th>
+                                <th>Datum:</th>
+                                <th>Dauer:</th>
+                                <th>Thema:</th>
+                                <th>Ausbildungs ID:</th>
+                                <th>Ausbilder:</th>
+                              </tr>
+                              <tr>
+                                <td><input type="text" name = "Ausbildungsthema ID"  value="<?php echo($_SESSION["userAT_ID"]) ?>" class="form-control" readonly></td>
+                                <td><input type="text" name = "Datum" value="<?php echo( $_SESSION["userDatum"]) ?>" class="form-control" readonly></td>
+                                <td><input type="text" name = "Dauer" value="<?php echo($_SESSION["userDauer"]) ?>" class="form-control" readonly></td>
+                                <td><input type="date" name = "Thema" value="<?php echo($_SESSION["userThema"]) ?>" class="form-control" readonly></td>
+                                <td><input type="email" name = "Ausbildungs ID" value="<?php echo($_SESSION["userA_ID"]) ?>" class="form-control" readonly></td>
+                                <td><input type="text" name = "Ausbilder" value="<?php echo($_SESSION["userAusbilder"]) ?>" class="form-control" readonly></td>
+                              </tr>
+    </table>
+          
                     <p></p>
-                <input type="button" value="Profil ändern" onClick="window.location.href='Profil ändern.php'">
+                <input type="button" value="PDF Export" onClick="window.location.href='Profil ändern.php'">
                 </form>
-            </div>
         </div>
         <br><br><br><br><br><br><br><br><br><br><br><br>
         </section>

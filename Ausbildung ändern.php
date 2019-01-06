@@ -19,7 +19,7 @@ session_start();
 <meta charset="UTF-8">
 <link rel="Stylesheet" type="text/css" href="bootstrap.css">
 <head>
-    <title>Profil ändern</title>
+    <title>Ausbildung ändern</title>
     
     <style>
         .navbar{
@@ -108,7 +108,9 @@ session_start();
                 </li>
                 <li><a href="Ausbildungen Bergwacht.html">Ausbildung</a>
                     <ul>
-                        <li><a href="Anwesenheitsliste Bergwacht.html">Anwesenheitsliste</a></li>
+                        <li><a href="Anwesenheitsliste.php">Anwesenheitsliste</a></li>
+                        <li><a href="Ausbildung anzeigen.php">Ausbildung anzeigen</a></li>
+                        <li><a href="Ausbildung ändern.php">Ausbildung ändern</a></li>
                     </ul>
                 </li>
                 <li><a href="Inventar Bergwacht.html">Inventar</a>
@@ -134,96 +136,22 @@ session_start();
             <div class="container">
             <div class="row">
             <div class="col-md-6">
-                <h2>Profil ändern:</h2>
+                <h2>Ausbildung ändern:</h2>
                
-                <p>Hier können Sie ihre Nutzerdaten ändern.</p>
+                <p>Hier können Sie ihre Ausbildung ändern.</p>
             </div>
             <div class="col-md-6">
                 <form name="profilaendernFormular" method="post" action="Profil ändern verarbeiten.php">
-                <label>Name :*</label>
+                <label>Ausbildungs-ID :</label>
                 <div class="row">
                     <div class="col-md-7">
-                        <input type="text" name = "name" value="<?php echo( $_SESSION["userName"]) ?>" class="form-control">
+                        <input type="text" name = "ID" value="<?php echo( $_SESSION["userA_ID"]) ?>" class="form-control">
                     </div>
                 </div>
-                <label>Vorname :*</label>
+                <label>Bezeichnung :</label>
                 <div class="row">
                     <div class="col-md-7">
-                        <input type="text" name = "vorname" value="<?php echo($_SESSION["userForename"]) ?>" class="form-control">
-                    </div>
-                </div>
-                <label>Geburtsdatum :*</label>
-                <div class="row">
-                    <div class="col-md-7">
-                        <input type="date" name = "birthday" value="<?php echo($_SESSION["userBirthday"]) ?>" class="form-control">
-                    </div>
-                </div>
-                <label>E-Mail :*</label>
-                <div class="row">
-                    <div class="col-md-7">
-                        <input type="email" name = "email" value="<?php echo($_SESSION["userEMail"]) ?>" class="form-control">
-                    </div>
-                </div>
-                <label>Rolle :*</label>
-                <div class="row">
-                    <div class="col-md-7">
-                        <select name="roles" class="form-control">
-                            <?php
-                              
-                                // Auslesen aller vorhandenen Rollen aus der Datenbank
-                                $query1 = "SELECT Rolle FROM tbl_rolle"; 
-
-                                $result = mysqli_query($db, $query1); //Query ausführen und ergebnis speichern
-
-                                while($roles_db = $result->fetch_assoc())
-                                {
-                                    $role =  $roles_db["Rolle"];
-                                    // Ausgabe jeder einzelnen Rolle für Dropdownliste (select)
-                                    if($role == $_SESSION["userRoleString"])
-                                    {
-                                        echo "<option value=$role selected> $role </option>";
-                                    }
-                                    else
-                                    {
-                                        echo "<option value=$role> $role </option>";
-                                    }
-                                    
-                                }
-                            ?>
-                        </select>
-                    </div>
-                </div>
-                <label>Status :*</label>
-                <div class="row">
-                    <div class="col-md-7">
-                        <?php 
-                            if($_SESSION["userState"] == "aktiv")
-                            {
-                                echo "<select name='state' class='form-control'>
-                                <option value='aktiv' selected>aktiv</option>
-                                <option value='passiv'>passiv</option>
-                                </select>";
-                            }
-                            else
-                            {
-                                echo "<select name='state' class='form-control'>
-                                <option value='aktiv' >aktiv</option>
-                                <option value='passiv' selected>passiv</option>
-                                </select>";
-                            }
-                        ?>
-                    </div>
-                </div>
-                <!-- <label> Altes Passwort :*</label>
-                <div class="row">
-                    <div class="col-md-7">
-                        <input type="password" name="oldpassword" class="form-control"> 
-                    </div>
-                </div> -->
-                <label>Neues Passwort :*</label>
-                <div class="row">
-                    <div class="col-md-7">
-                        <input type="password" name = "newpassword" class="form-control">
+                        <input type="text" name = "Ausbildungsbezeichnung" value="<?php echo($_SESSION["userAusbildungsbezeichnung"]) ?>" class="form-control">
                     </div>
                 </div>
                 <p></p>
