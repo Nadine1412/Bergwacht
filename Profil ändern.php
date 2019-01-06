@@ -175,9 +175,9 @@ session_start();
 
                                 $result = mysqli_query($db, $query1); //Query ausführen und ergebnis speichern
 
-                                while($roles_db = $result->fetch_assoc())
+                                while($role_db = $result->fetch_assoc())
                                 {
-                                    $role =  $roles_db["Rolle"];
+                                    $role =  $role_db["Rolle"];
                                     // Ausgabe jeder einzelnen Rolle für Dropdownliste (select)
                                     if($role == $_SESSION["userRoleString"])
                                     {
