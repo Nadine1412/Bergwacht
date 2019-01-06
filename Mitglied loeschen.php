@@ -7,6 +7,7 @@
 <html>
 <meta charset="UTF-8">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.js"></script>
+
 <link rel="Stylesheet" type="text/css" href="bootstrap.css">
 
 <head>
@@ -153,22 +154,11 @@
                     </div>      
             <section id="container" class="container">
             <br><br><br><br><br><br>
-            <?php 
 
-                // //Abfrage ob Admin oder nicht
-                // if($_SESSION["userRoleString"] == "Anwaerter" or $_SESSION["userRoleString"] == "Ausbilder")
-                // {
-                //     echo("Sie sind Admin.");
-                // }
-                // else
-                // {
-                //     echo("Sie sind kein Admin");
-                // }
-            ?>
             <center><h2>Mitglieder</h2></center>
             <p></p>
             <form name="mitgliedloeschenFormular" method="post" action="Mitglied loeschen verarbeiten.php">
-            <div style="width:60%;" class="container">
+            <div style="width:60%;" id="Mitgliederloeschentbl"class="container">
                     
                             <body>
                                                         
@@ -235,6 +225,25 @@
                             </table>
                 </div>
                 </form>
+                <div style="width:60%;" id="KeinAdmin"class="container">
+                Sie haben keine Admin-Rechte und können keine Mitglieder löschen.
+                                    </div>
+                <script type="text/javascript">
+           var rolle = "<?php echo($_SESSION['userRoleString']);?>";
+           var table = document.getElementById("Mitgliederloeschentbl");
+           var unauthorised = document.getElementById("KeinAdmin");
+
+           if(rolle == "Anwaerter" || rolle == "Ausbilder")
+           {
+                table.hidden=false;
+                unauthorised.hidden=true;
+           }
+           else
+           {
+                table.hidden=true;
+                unauthorised.hidden=false;
+           }
+        </script>
                 <br><br>
                 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
                 </section>
