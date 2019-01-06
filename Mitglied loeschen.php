@@ -5,7 +5,7 @@
 <link rel="Stylesheet" type="text/css" href="bootstrap.css">
 
 <head>
-    <title>Mitglieder Bergwacht</title>
+    <title>Mitglieder Bergwacht löschen</title>
     <style>
         .navbar{
             width: 100%;
@@ -150,6 +150,7 @@
             <br><br><br><br><br><br>
             <center><h2>Mitglieder</h2></center>
             <p></p>
+            <form name="mitgliedloeschenFormular" method="post" action="Mitglied loeschen verarbeiten.php">
             <div style="width:60%;" class="container">
                     
                             <body>
@@ -163,6 +164,7 @@
                                 <th>EMail</th>
                                 <th>Rolle</th>
                                 <th>Status</th>
+                                <th>Daten löschen</th>
                               </tr>
                                      <?php
                                         /* DB Verbindung herstellen */
@@ -200,19 +202,22 @@
                                             echo( 
                                             "
                                             <tr> 
-                                                <td>$mID</td>
+                                                <td>$mID</td> 
                                                 <td>$name</td>
                                                 <td>$forename</td>
                                                 <td>$birthday</td>
                                                 <td>$eMail</td>
                                                 <td>$roleString</td>
                                                 <td>$state</td>
+                                                <td><button type='submit' name='Mitgliedloeschen' value='$mID'>Löschen</button></td>
                                             </tr>");
                                         }
+                                        
                                     ?>
 
                             </table>
                 </div>
+                </form>
                 <br><br>
                 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
                 </section>
