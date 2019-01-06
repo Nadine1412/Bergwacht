@@ -9,7 +9,6 @@ session_start();
   define("DB_DATABASE", "bergwacht_db");
 
   $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error());
-  $test = $_SESSION["userPasswordEnc"];
 
   ?>
 
@@ -119,9 +118,9 @@ session_start();
                         <li><a href="Inventar loeschen.html">Inventar löschen</a></li>
                     </ul>
                 </li>
-                <li><a href="Mitglieder Bergwacht.html">Mitglieder</a></li>
+                <li><a href="Mitglieder Bergwacht.php">Mitglieder</a></li>
                 <ul>
-                    <li><a href="Mitglied loeschen.html">Mitglied löschen</a></li>
+                    <li><a href="Mitglied loeschen.php">Mitglied löschen</a></li>
                 </ul>
                 <li><a href="Charts Bergwacht.html">Charts</a></li>
                 <li><a href="Kalender Bergwacht.html">Kalender</a></li>

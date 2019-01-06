@@ -16,6 +16,7 @@ define("DB_DATABASE", "bergwacht_db");
 $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error());
 /* eingegebenes Passwort hashen*/
 
+
 // Passwort von EMail holen
  $query1 = "SELECT Passwort FROM tbl_mitglied
             WHERE EMail LIKE '$email' "; 
@@ -40,6 +41,37 @@ if ($result->num_rows != 0)
         
         // E-Mail Adresse wird als Session-Variable gespeichert
         $_SESSION["LoggedEMail"] = $email;
+
+        $query2 = "SELECT * FROM tbl_mitglied WHERE EMail LIKE '" . $_SESSION["LoggedEMail"] . "'";
+
+        $result2 = mysqli_query($db, $query2); //Query ausführen und ergebnis speichern
+    
+        while($user_db = $result2->fetch_assoc())
+        {
+            // Laden der Userdaten aus der Datenbank
+            $_SESSION["userName"] =  $user_db["Name"];
+            $_SESSION["userForename"] =  $user_db["Vorname"];
+            $_SESSION["userMID"] =  $user_db["M_ID"];
+            $_SESSION["userBirthday"] =  $user_db["GebDatum"];
+            $_SESSION["userState"] =  $user_db["Status"];
+            $_SESSION["userEMail"] =  $user_db["EMail"];
+            $_SESSION["userRole"] = $user_db["Rolle"];
+            $_SESSION["userPasswordEnc"] = $user_db["Passwort"];        
+    
+            // Abfrage der UserRole um die RollenID in die Bezeichnung umzuwandeln
+            $query3 = "SELECT Rolle FROM tbl_rolle WHERE R_ID LIKE '" . $_SESSION["userRole"] . "' ";
+            
+            $resultRoleString = mysqli_query($db, $query3);
+    
+            while($role_db = $resultRoleString->fetch_assoc())
+            {
+                $_SESSION["userRoleString"] = $role_db["Rolle"];
+            }
+               
+        }
+
+
+
 
         header('location: Charts Bergwacht.html');
         echo "Passwort korrekt.";

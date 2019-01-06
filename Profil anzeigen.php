@@ -1,43 +1,6 @@
 <?php
     //Session starten
     session_start();
-
-    /* DB Verbindung herstellen */
-    define("DB_HOST", "localhost");
-    define("DB_USER", "root");
-    define("DB_PASSWORD", "");
-    define("DB_DATABASE", "bergwacht_db");
-
-    $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error());
-
-    $query1 = "SELECT * FROM tbl_mitglied WHERE EMail LIKE '" . $_SESSION["LoggedEMail"] . "'";
-
-    $result = mysqli_query($db, $query1); //Query ausführen und ergebnis speichern
-
-    while($user_db = $result->fetch_assoc())
-    {
-        // Laden der Userdaten aus der Datenbank
-        $_SESSION["userName"] =  $user_db["Name"];
-        $_SESSION["userForename"] =  $user_db["Vorname"];
-        $_SESSION["userMID"] =  $user_db["M_ID"];
-        $_SESSION["userBirthday"] =  $user_db["GebDatum"];
-        $_SESSION["userState"] =  $user_db["Status"];
-        $_SESSION["userEMail"] =  $user_db["EMail"];
-        $_SESSION["userRole"] = $user_db["Rolle"];
-        $_SESSION["userPasswordEnc"] = $user_db["Passwort"];        
-
-        // Abfrage der UserRole um die RollenID in die Bezeichnung umzuwandeln
-        $query2 = "SELECT Rolle FROM tbl_rolle WHERE R_ID LIKE '" . $_SESSION["userRole"] . "' ";
-        
-        $resultRoleString = mysqli_query($db, $query2);
-
-        while($role_db = $resultRoleString->fetch_assoc())
-        {
-            $_SESSION["userRoleString"] = $role_db["Rolle"];
-        }
-        
-        
-    }
 ?>
 
 
@@ -145,9 +108,9 @@
                                     <li><a href="Inventar loeschen.html">Inventar löschen</a></li>
                                 </ul>
                             </li>
-                            <li><a href="Mitglieder Bergwacht.html">Mitglieder</a></li>
+                            <li><a href="Mitglieder Bergwacht.php">Mitglieder</a></li>
                             <ul>
-                                <li><a href="Mitglied loeschen.html">Mitglied löschen</a></li>
+                                <li><a href="Mitglied loeschen.php">Mitglied löschen</a></li>
                             </ul>
                             <li><a href="Charts Bergwacht.html">Charts</a></li>
                             <li><a href="Kalender Bergwacht.html">Kalender</a></li>

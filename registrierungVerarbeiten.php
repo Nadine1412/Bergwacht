@@ -58,7 +58,7 @@ $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error()
 
          # weiterleitung auf die seite nach erfolgreichem login
         #header('location: Anmeldung Bergwacht.html');
-        header('location: startseite.html');
+        header('location: Anmeldung Bergwacht.html');
         exit(1);
     }
     else

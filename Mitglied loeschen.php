@@ -1,11 +1,17 @@
+<?php
+//Session starten
+                session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 <meta charset="UTF-8">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.js"></script>
+
 <link rel="Stylesheet" type="text/css" href="bootstrap.css">
 
 <head>
-    <title>Mitglieder Bergwacht</title>
+    <title>Mitglieder Bergwacht löschen</title>
     <style>
         .navbar{
             width: 100%;
@@ -137,20 +143,22 @@
                                     <li><a href="Inventar loeschen.html">Inventar löschen</a></li>
                                 </ul>
                             </li>
-                            <li><a href="Mitglieder Bergwacht.php">Mitglieder</a></li>
-                            <ul>
+                            <li><a href="Mitglieder Bergwacht.php">Mitglieder</a></li>                           
+                            <ul>                         
                                 <li><a href="Mitglied loeschen.php">Mitglied löschen</a></li>
                             </ul>
                             <li><a href="Charts Bergwacht.html">Charts</a></li>
                             <li><a href="Kalender Bergwacht.html">Kalender</a></li>
-                        </ul>
+                            </ul>
                         <input type="button" value="Logout" onClick="window.location.href='Anmeldung Bergwacht.html'">
                     </div>      
             <section id="container" class="container">
             <br><br><br><br><br><br>
+
             <center><h2>Mitglieder</h2></center>
             <p></p>
-            <div style="width:60%;" class="container">
+            <form name="mitgliedloeschenFormular" method="post" action="Mitglied loeschen verarbeiten.php">
+            <div style="width:60%;" id="Mitgliederloeschentbl"class="container">
                     
                             <body>
                                                         
@@ -163,6 +171,7 @@
                                 <th>EMail</th>
                                 <th>Rolle</th>
                                 <th>Status</th>
+                                <th>Daten löschen</th>
                               </tr>
                                      <?php
                                         /* DB Verbindung herstellen */
@@ -200,19 +209,41 @@
                                             echo( 
                                             "
                                             <tr> 
-                                                <td>$mID</td>
+                                                <td>$mID</td> 
                                                 <td>$name</td>
                                                 <td>$forename</td>
                                                 <td>$birthday</td>
                                                 <td>$eMail</td>
                                                 <td>$roleString</td>
                                                 <td>$state</td>
+                                                <td><button type='submit' name='Mitgliedloeschen' value='$mID'>Löschen</button></td>
                                             </tr>");
                                         }
+                                        
                                     ?>
 
                             </table>
                 </div>
+                </form>
+                <div style="width:60%;" id="KeinAdmin"class="container">
+                Sie haben keine Admin-Rechte und können keine Mitglieder löschen.
+                                    </div>
+                <script type="text/javascript">
+           var rolle = "<?php echo($_SESSION['userRoleString']);?>";
+           var table = document.getElementById("Mitgliederloeschentbl");
+           var unauthorised = document.getElementById("KeinAdmin");
+
+           if(rolle == "Anwaerter" || rolle == "Ausbilder")
+           {
+                table.hidden=false;
+                unauthorised.hidden=true;
+           }
+           else
+           {
+                table.hidden=true;
+                unauthorised.hidden=false;
+           }
+        </script>
                 <br><br>
                 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
                 </section>

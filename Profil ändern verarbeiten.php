@@ -11,7 +11,16 @@ $selectedRole = $_POST['roles'];
 $state = $_POST['state'];
 
 $password = $_POST['newpassword'];
-$password_encrypt = password_hash($password, PASSWORD_DEFAULT);
+
+if(empty($password))
+{
+    $password_encrypt = $_SESSION["userPasswordEnc"];
+}
+else
+{
+    $password_encrypt = password_hash($password, PASSWORD_DEFAULT);
+}
+
 
 /* DB Verbindung herstellen */
 define("DB_HOST", "localhost");
