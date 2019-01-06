@@ -23,7 +23,7 @@ $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error()
      # Material bereits vorhanden
    // @ToDo Ausgabe, das Material bereits vorhanden ist.
     echo "Material bereits vorhanden";
-    exit();
+    exit(1);
     } 
 else {
     
@@ -39,11 +39,13 @@ else {
     if($eintragen)
     {
         echo "Das Material wurde hinzugefügt.";
-        exit();
+        header('location: Inventar anzeigen.php');
+        exit(1);
     }
     else
     {
         echo "Das Material konnte nicht hinzugefügt werden.";
+        header('location:Inventar pflegen.html');
         exit();
     }
  } 

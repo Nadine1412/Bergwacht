@@ -4,9 +4,24 @@
 <link rel="Stylesheet" type="text/css" href="bootstrap.css">
 <link rel="Stylesheet" type="text/css" href="style.css">
 <head>
-    <title>Profil anzeigen</title>
-    <style>
-        .navbar{
+        <title>Inventar löschen</title>
+        <style>
+            table {
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+            }
+            
+            td, th {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+            }
+            
+            tr:nth-child(even) {
+                background-color: #dddddd;
+            }
+            .navbar{
             width: 100%;
             background-color: #6699cc;
 
@@ -69,25 +84,41 @@
         ul ul ul{
             left:100
         }
-        body{
-            color: rgba(255, 255, 255, 0.16);
-            position: relative;
-            background: url("landscape-615429_1920.jpg") ;
-            background-size:cover;
+            table {
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+            }
             
-        }
-        .container{
-            color: rgb(255, 255, 255);
-        }
-    </style>
-    <body>
-    <div class="navbar">
+            td, th {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+            }
+            
+            tr:nth-child(even) {
+                background-color: #dddddd;
+            }
+
+            body{
+                color: rgba(255, 255, 255, 0.16);
+                position: relative;
+                background: url("landscape-615429_1920.jpg") ;
+                background-size:cover;     
+            }
+            .container{
+                color: rgb(255, 255, 255);
+            }  
+            </style>
+    </head>
+        <body>
+                <div class="navbar">
                         <ul>
                             <li><a href="startseite.html">Home</a></li>
                             <li><a href="Profil anzeigen.php">Profil</a>
                                 <ul>
                                     <li><a href="Profil anzeigen.php">Profil anzeigen</a></li>
-                                    <li><a class="active" href="Profil ändern.php">Profil ändern</a></li>
+                                    <li><a href="Profil ändern.php">Profil ändern</a></li>
                                 </ul>
                             </li>
                             <li><a href="Ausbildungen Bergwacht.html">Ausbildung</a>
@@ -98,9 +129,9 @@
                             <li><a href="Inventar Bergwacht.html">Inventar</a>
                                 <ul>
                                     <li><a href="Inventar pflegen.html">Inventar anlegen</a></li>
-                                    <li><a href="Inventar ändern.html">Inventar ändern</a></li>
+                                    <li><a href="Inventar ändern.php">Inventar ändern</a></li>
                                     <li><a href="Inventar anzeigen.php">Inventar anzeigen</a></li>
-                                    <li><a href="Inventar loeschen.html">Inventar löschen</a></li>
+                                    <li><a class="active" href="Inventar loeschen.html">Inventar löschen</a></li>
                                 </ul>
                             </li>
                             <li><a href="Mitglieder Bergwacht.html">Mitglieder</a></li>
@@ -111,56 +142,31 @@
                             <li><a href="Kalender Bergwacht.html">Kalender</a></li>
                         </ul>
                         <input type="button" value="Logout" onClick="window.location.href='Anmeldung Bergwacht.html'">
-                    </div>
-                    
-        <section id="container" class="container">
+                    </div>            
+                <section id="container" class="container">
             <br><br><br><br><br><br>
             <div class="container">
             <div class="row">
             <div class="col-md-6">
-                <h2>Registrierung</h2>
-                <p>Für die Nutzung der Kapazitätsübersicht ist eine Registrierung erforderlich, geben Sie hierfür Ihre Daten im nebenstehenden Formular ein.</p>
+                <h2>Inventar löschen</h2>
+               
+                <p>Hier können Sie ein bestimmtes Material löschen.</p>
             </div>
             <div class="col-md-6">
-                <form name="registrierungFormular" method="post" action="registrierungVerarbeiten.php">
-                <legend>Daten eingeben</legend>
-                    <label>Name :*</label>
-                    <div class="row">
+                <form name="inventarLöschen" method="post" action="deleteInventar.php">
+                <legend>Bitte geben Sie eine Materialbezeichnung ein:</legend>
+                <label>Materialbezeichnung :*</label>
+                <div class="row">
                     <div class="col-md-7">
-                    <input type="text" name = "name" class="form-control" required>
-                </div>
-                </div>
-                    <label>Vorname :*</label>
-                    <div class="row">
-                    <div class="col-md-7">
-                    <input type="text" name = "vorname" class="form-control" required>
-                </div>
-                </div>
-                    <label>MaID :*</label>
-                    <div class="row">
-                    <div class="col-md-7">
-                    <input name="maid" type="text" class="form-control" required>
-                </div>
-                </div>
-                    <label>Position :*</label>
-                    <div class="row">
-                    <div class="col-md-7">
-                    <input type="text" name = "position" class="form-control" required>
-                </div>
-                </div>
-                    <label>Passwort :*</label>
-                    <div class="row">
-                    <div class="col-md-7">
-                    <input type="text" name = "password" class="form-control" required>
-                </div>
+                        <input type="text" name = "matbez" class="form-control" required>
+                    </div>
                 </div>
                 <p></p>
-                    <button type="submit">Registrieren</button>
-                    <p></p>
+                <button type="submit">Inventar Löschen</button>
                 </form>
             </div>
         </div>
         <br><br><br><br><br><br><br><br><br><br><br><br>
         </section>
-</body>
+        </body>
 </html>

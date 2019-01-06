@@ -36,22 +36,37 @@
         </style>
 </head>
 <body>
-    <div id="Navigationsbereich">
-            <ul>
-                <li><a href="startseite.html">Home</a></li>
-                <li><a href="Profil anzeigen.php">Profil</a>
-                    <ul>
-                        <li><a class="active" href="Profil anzeigen.php">Profil anzeigen</a></li>
-                        <li><a href="Profil ändern.php">Profil ändern</a></li>
-                    </ul>
-                </li>
-                <li><a href="Ausbildungen Bergwacht.html">Ausbildung</a></li>
-                <li><a href="Inventar Bergwacht.html">Inventar</a></li>
-                <li><a href="Mitglieder Bergwacht.html">Mitglieder</a></li>
-                <li><a href="Charts Bergwacht.html">Charts</a></li>
-                <li><a href="Kalender Bergwacht.html">Kalender</a></li>
-            </ul>
-    </div>
+<div class="navbar">
+                            <ul>
+                                <li><a href="startseite.html">Home</a></li>
+                                <li><a href="Profil anzeigen.php">Profil</a>
+                                    <ul>
+                                        <li><a href="Profil anzeigen.php">Profil anzeigen</a></li>
+                                        <li><a href="Profil ändern.php">Profil ändern</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="Ausbildungen Bergwacht.html">Ausbildung</a>
+                                    <ul>
+                                        <li><a href="Anwesenheitsliste Bergwacht.html">Anwesenheitsliste</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="Inventar Bergwacht.html">Inventar</a>
+                                    <ul>
+                                        <li><a href="Inventar pflegen.html">Inventar anlegen</a></li>
+                                        <li><a class="active" href="Inventar ändern.html">Inventar ändern</a></li>
+                                        <li><a href="Inventar anzeigen.php">Inventar anzeigen</a></li>
+                                        <li><a href="Inventar loeschen.html">Inventar löschen</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="Mitglieder Bergwacht.html">Mitglieder</a></li>
+                                <ul>
+                                    <li><a href="Mitglied loeschen.html">Mitglied löschen</a></li>
+                                </ul>
+                                <li><a href="Charts Bergwacht.html">Charts</a></li>
+                                <li><a href="Kalender Bergwacht.html">Kalender</a></li>
+                            </ul>
+                            <input type="button" value="Logout" onClick="window.location.href='Anmeldung Bergwacht.html'">
+                        </div>
     <section id="contact" class="contact">
             <br><br><br><br><br><br>
             <div class="container">
@@ -59,15 +74,15 @@
             <div class="col-md-6">
                 <h2>Inventar anzeigen</h2>
                
-                <p>Hier können Sie ein bestimmtes Material ansehen.</p>
+                <p>Hier können Sie das Material ändern.</p>
             </div>
             <div class="col-md-6">
-                <form name="inventarLaden" method="post" action="inventarLaden.php">
+                <form name="changeInventar" method="post" action="changeInventar.php">
                 <legend>Bitte geben Sie eine Materialbezeichnung ein:</legend>
                 <label>Materialbezeichnung :*</label>
                 <div class="row">
                     <div class="col-md-7">
-                        <input type="text" name = "matbez" class="form-control" required>
+                        <input type="text" name = "matbez" value= "<?php echo($_SESSION["matbez"]) ?>" class="form-control" readOnly>
                     </div>
                 </div>
                   <?php

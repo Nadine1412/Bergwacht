@@ -118,7 +118,7 @@
                             <li><a href="Profil anzeigen.php">Profil</a>
                                 <ul>
                                     <li><a href="Profil anzeigen.php">Profil anzeigen</a></li>
-                                    <li><a class="active" href="Profil ändern.php">Profil ändern</a></li>
+                                    <li><a href="Profil ändern.php">Profil ändern</a></li>
                                 </ul>
                             </li>
                             <li><a href="Ausbildungen Bergwacht.html">Ausbildung</a>
@@ -129,8 +129,8 @@
                             <li><a href="Inventar Bergwacht.html">Inventar</a>
                                 <ul>
                                     <li><a href="Inventar pflegen.html">Inventar anlegen</a></li>
-                                    <li><a href="Inventar ändern.html">Inventar ändern</a></li>
-                                    <li><a href="Inventar anzeigen.php">Inventar anzeigen</a></li>
+                                    <li><a href="Inventar ändern.php">Inventar ändern</a></li>
+                                    <li><a class="active" href="Inventar anzeigen.php">Inventar anzeigen</a></li>
                                     <li><a href="Inventar loeschen.html">Inventar löschen</a></li>
                                 </ul>
                             </li>
@@ -181,24 +181,24 @@
                     {
                         echo "<div class="row">
                                  <div class="col-md-7">
-                                    <input type="text" name =$row['bezeichnung'] class="form-control" readOnly>
+                                    <input type="text" name ="matbez" value="$row['bezeichnung']" class="form-control" readOnly>
                                  </div>
                              </div>";
                         echo "<div class="row">
                                 <div class="col-md-7">
-                                    <input type="text" name =$row['datum'] class="form-control" readOnly>
+                                    <input type="text" name ="datum" value="$row['datum']"" class="form-control" readOnly>
                                 </div>
                               </div>";
                         echo "<div class="row">
                               <div class="col-md-7">
-                                <input type="text" name =$row['status'] class="form-control" readOnly>
+                                <input type="text" name ="status" value="$row['status']" class="form-control" readOnly>
                               </div>
                             </div>";
                         // wenn status = ausgeliehen dann zeige standort mit an
                         if($row['status'] == "ausgeliehen"){
                             echo "<div class="row">
                                     <div class="col-md-7">
-                                        <input type="text" name =$row['standort'] class="form-control" readOnly>
+                                        <input type="text" name ="standort" value="$row['standort']" class="form-control" readOnly>
                                     </div>
                                   </div>";
                         }  
@@ -206,6 +206,7 @@
                 ?>
                 <p></p>
                 <input type="button" value="Inventar ändern" onClick="window.location.href='Inventar ändern.php'">
+                <input type="button" value="Inventar löschen" onClick="window.location.href='Inventar löschen.php'">
                 </form>
             </div>
         </div>
