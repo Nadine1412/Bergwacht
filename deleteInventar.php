@@ -14,7 +14,7 @@ $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error()
 
 // material löschen
  $query1 = "Delete tbl_inventar 
-            WHERE bezeichnung= '$materialbez'"; 
+            WHERE bezeichnung= '$materialbez';"; 
 
  $check = mysqli_query($db, $query1); //Query ausführen und ergebnis speichern
 

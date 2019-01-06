@@ -153,7 +153,7 @@
                 <p>Hier können Sie ein bestimmtes Material ansehen.</p>
             </div>
             <div class="col-md-6">
-                <form name="inventarLaden" method="post" action="inventarLaden.php">
+               <!-- <form name="inventarLaden" method="post" action="inventarLaden.php"> -->
                 <legend>Bitte geben Sie eine Materialbezeichnung ein:</legend>
                 <label>Materialbezeichnung :*</label>
                 <div class="row">
@@ -207,7 +207,7 @@
                 <p></p>
                 <input type="button" value="Inventar ändern" onClick="window.location.href='Inventar ändern.php'">
                 <input type="button" value="Inventar löschen" onClick="window.location.href='Inventar löschen.php'">
-                </form>
+              <!--  </form> -->
             </div>
         </div>
         <br><br><br><br><br><br><br><br><br><br><br><br>
