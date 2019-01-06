@@ -1,41 +1,3 @@
-<?php
-    //Session starten
-    session_start();
-
-    /* DB Verbindung herstellen */
-    define("DB_HOST", "localhost");
-    define("DB_USER", "root");
-    define("DB_PASSWORD", "");
-    define("DB_DATABASE", "bergwacht_db");
-
-    $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error());
-
-    $query1 = "SELECT * FROM tbl_ausbildung WHERE EMail LIKE '" . $_SESSION["LoggedEMail"] . "'";
-
-    $result = mysqli_query($db, $query1); //Query ausführen und ergebnis speichern
-
-    while($user_db = $result->fetch_assoc())
-    {
-        // Laden der Ausbildungsdaten aus der Datenbank
-        $_SESSION["userA_ID"] =  $user_db["Ausbildungs ID"];
-        $_SESSION["userAusbildungsbezeichnung"] =  $user_db["Ausbildungsbezeichnung"];
-        
-
-        // Abfrage der UserRole um die RollenID in die Bezeichnung umzuwandeln
-        $query2 = "SELECT Rolle FROM tbl_rolle WHERE R_ID LIKE '" . $_SESSION["userRole"] . "' ";
-        
-        $resultRoleString = mysqli_query($db, $query2);
-
-        while($user_db2 = $resultRoleString->fetch_assoc())
-        {
-            $_SESSION["userRoleString"] = $user_db2["Rolle"];
-        }
-        
-        
-    }
-?>
-
-
 <!DOCTYPE html>
 <html>
 <meta charset="UTF-8">
@@ -106,6 +68,37 @@
         ul ul ul{
             left:100
         }
+        table {
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+            }
+            
+            /* td, th {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+                background-color: grey;
+            } */
+            
+            td{
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+                background-color: #D3D3D3;
+                color: black;
+            }
+            th {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+                background-color: #6699cc;
+                color: white;
+            }
+
+            tr:nth-child(even) {
+                background-color: #dddddd;
+            }
         body{
             color: rgba(255, 255, 255, 0.16);
             position: relative;
@@ -154,33 +147,48 @@
                     
         <section id="container" class="container">
             <br><br><br><br><br><br>
-            <div class="container">
-            <div class="row">
-            <div class="col-md-6">
-                <h2>Ausbildung anzeigen</h2>
+              <center>  <h2>Ausbildung anzeigen</h2></center> 
                
-                <p>Hier können Sie ihre Ausbildungen einsehen und ändern.</p>
-            </div>
-            <div class="col-md-6">
-            <label>Ausbildungs-ID:</label>
-                <div class="row">
-                    <div class="col-md-7">
-                        <input type="text" name = "ID"  value="<?php echo($_SESSION["A_ID"]) ?>" class="form-control" readonly>
-                    </div>
-                </div>
-                <label>Bezeichnung:</label>
-                <div class="row">
-                    <div class="col-md-7">
-                        <input type="text" name = "Bezeichnung" value="<?php echo( $_SESSION["Ausbildungsbezeichnung"]) ?>" class="form-control" readonly>
-                    </div>
-                </div>
-                
-                    <p></p>
-                <input type="button" value="Ausbildung ändern" onClick="window.location.href='Ausbildung ändern.php'">
-                </form>
-            </div>
-        </div>
-        <br><br><br><br><br><br><br><br><br><br><br><br>
+              <center>  <p>Hier können Sie ihre Ausbildungen einsehen und ändern.</p> </center> 
+              <div style="width:60%;" class="container">
+
+        <table>
+                              <tr>
+                                <th>Ausbildungs-ID:</th>
+                                <th>Bezeichnung:</th>
+                              </tr>
+                              <?php
+                                    /* DB Verbindung herstellen */
+                                    define("DB_HOST", "localhost");
+                                    define("DB_USER", "root");
+                                    define("DB_PASSWORD", "");
+                                    define("DB_DATABASE", "bergwacht_db");
+
+                                    $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error());
+
+                                    $query1 = "SELECT * FROM tbl_ausbildung";
+
+                                    $result = mysqli_query($db, $query1); //Query ausführen und ergebnis speichern
+
+                                    while($user_db = $result->fetch_assoc())
+                                    {
+                                        // Laden der Ausbildungsdaten aus der Datenbank
+                                        $a_id =  $user_db["A_ID"];
+                                        $ausbildungsbezeichnung =  $user_db["Ausbildungsbezeichnung"];
+                                        echo("
+                                        <tr>
+                                            <td>$a_id </td>
+                                            <td>$ausbildungsbezeichnung</td>
+                                            </tr>
+                                        ");       
+                                    }
+                                ?>  
+                         </table>
+                         <p></p>
+                <input type="button" value="Ausbildung anlegen" onClick="window.location.href='Ausbildung anlegen.php'">
+                <input type="button" value="Ausbildung löschen" onClick="window.location.href='Ausbildung loeschen.php'">
         </section>
+
+        
 </body>
 </html>
