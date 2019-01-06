@@ -1,3 +1,8 @@
+<?php
+//Session starten
+                session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 <meta charset="UTF-8">
@@ -137,17 +142,29 @@
                                     <li><a href="Inventar loeschen.html">Inventar löschen</a></li>
                                 </ul>
                             </li>
-                            <li><a href="Mitglieder Bergwacht.php">Mitglieder</a></li>
-                            <ul>
+                            <li><a href="Mitglieder Bergwacht.php">Mitglieder</a></li>                           
+                            <ul>                         
                                 <li><a href="Mitglied loeschen.php">Mitglied löschen</a></li>
                             </ul>
                             <li><a href="Charts Bergwacht.html">Charts</a></li>
                             <li><a href="Kalender Bergwacht.html">Kalender</a></li>
-                        </ul>
+                            </ul>
                         <input type="button" value="Logout" onClick="window.location.href='Anmeldung Bergwacht.html'">
                     </div>      
             <section id="container" class="container">
             <br><br><br><br><br><br>
+            <?php 
+
+                // //Abfrage ob Admin oder nicht
+                // if($_SESSION["userRoleString"] == "Anwaerter" or $_SESSION["userRoleString"] == "Ausbilder")
+                // {
+                //     echo("Sie sind Admin.");
+                // }
+                // else
+                // {
+                //     echo("Sie sind kein Admin");
+                // }
+            ?>
             <center><h2>Mitglieder</h2></center>
             <p></p>
             <form name="mitgliedloeschenFormular" method="post" action="Mitglied loeschen verarbeiten.php">

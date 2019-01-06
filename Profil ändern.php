@@ -9,7 +9,6 @@ session_start();
   define("DB_DATABASE", "bergwacht_db");
 
   $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error());
-  $test = $_SESSION["userPasswordEnc"];
 
   ?>
 
