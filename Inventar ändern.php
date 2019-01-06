@@ -4,7 +4,7 @@
 <link rel="Stylesheet" type="text/css" href="bootstrap.css">
 <link rel="Stylesheet" type="text/css" href="style.css">
 <head>
-        <title>Inventar anzeigen</title>
+        <title>Inventar ändern</title>
         <style>
             ul {
                 list-style-type: none;
@@ -71,8 +71,6 @@
                     </div>
                 </div>
                   <?php
-                  //Session starten
-                  session_start();
                    /* DB Verbindung herstellen */
                     define("DB_HOST", "localhost");
                     define("DB_USER", "root");
@@ -80,7 +78,6 @@
                     define("DB_DATABASE", "bergwacht_db");
 
                     $matbez = $_POST['matbez'];
-                    $_SESSION["matbez"] = $matbez;
 
                     $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error()); 
                     $query1 = "SELECT * FROM tbl_inventar WHERE bezeichnung LIKE '$matbez'";
