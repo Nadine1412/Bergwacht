@@ -148,83 +148,64 @@
             <div class="container">
             <div class="row">
             <div class="col-md-6">
-                <h2>Registrierung</h2>
+                <h2>Inventar anzeigen</h2>
                
-                <p>Für die Nutzung der Kapazitätsübersicht ist eine Registrierung erforderlich, geben Sie hierfür Ihre Daten im nebenstehenden Formular ein.</p>
+                <p>Hier können Sie ein bestimmtes Material ansehen.</p>
             </div>
             <div class="col-md-6">
-                <form name="registrierungFormular" method="post" action="registrierungVerarbeiten.php">
-                <legend>Daten eingeben</legend>
-                <label>Name :*</label>
+                <form name="inventarLaden" method="post" action="inventarLaden.php">
+                <legend>Bitte geben Sie eine Materialbezeichnung ein:</legend>
+                <label>Materialbezeichnung :*</label>
                 <div class="row">
                     <div class="col-md-7">
-                        <input type="text" name = "name" class="form-control" required>
+                        <input type="text" name = "matbez" class="form-control" required>
                     </div>
                 </div>
-                <label>Vorname :*</label>
-                <div class="row">
-                    <div class="col-md-7">
-                        <input type="text" name = "vorname" class="form-control" required>
-                    </div>
-                </div>
-                <label>Geburtsdatum :*</label>
-                <div class="row">
-                    <div class="col-md-7">
-                        <input type="date" name = "birthday" class="form-control">
-                    </div>
-                </div>
-                <label>E-Mail :*</label>
-                <div class="row">
-                    <div class="col-md-7">
-                        <input type="email" name = "email" class="form-control">
-                    </div>
-                </div>
-                <label>Rolle :*</label>
-                <div class="row">
-                    <div class="col-md-7">
-                        <select name="roles" class="form-control">
-                            <?php
-                                /* DB Verbindung herstellen */
-                                define("DB_HOST", "localhost");
-                                define("DB_USER", "root");
-                                define("DB_PASSWORD", "");
-                                define("DB_DATABASE", "bergwacht_db");
+                  <?php
+                  //Session starten
+                  session_start();
+                   /* DB Verbindung herstellen */
+                    define("DB_HOST", "localhost");
+                    define("DB_USER", "root");
+                    define("DB_PASSWORD", "");
+                    define("DB_DATABASE", "bergwacht_db");
 
-                                $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error());
+                    $matbez = $_POST['matbez'];
+                    $_SESSION["matbez"] = $matbez;
 
-                                // Auslesen aller vorhandenen Rollen aus der Datenbank
-                                $query1 = "SELECT Rolle FROM tbl_rolle"; 
+                    $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error()); 
+                    $query1 = "SELECT * FROM tbl_inventar WHERE bezeichnung LIKE '$matbez'";
+                    $result = mysqli_query($db, $query1);
 
-                                $result = mysqli_query($db, $query1); //Query ausführen und ergebnis speichern
-
-                                while($roles_db = $result->fetch_assoc())
-                                {
-                                    $role =  $roles_db["Rolle"];
-                                    // Ausgabe jeder einzelnen Rolle für Dropdownliste (select)
-                                    echo "<option value=$role> $role </option>";
-                                }
-                            ?>
-                        </select>
-                    </div>
-                </div>
-                <label>Status :*</label>
-                <div class="row">
-                    <div class="col-md-7">
-                    <select name="state" class="form-control">
-                        <option value="aktiv">aktiv</option>
-                        <option value="passiv">passiv</option>
-                        </select>
-                    </div>
-                </div>
-                <label>Passwort :*</label>
-                <div class="row">
-                    <div class="col-md-7">
-                        <input type="password" name = "password" class="form-control" required>
-                    </div>
-                </div>
+                    while($row = $result->fetch_assoc())
+                    {
+                        echo "<div class="row">
+                                 <div class="col-md-7">
+                                    <input type="text" name =$row['bezeichnung'] class="form-control" readOnly>
+                                 </div>
+                             </div>";
+                        echo "<div class="row">
+                                <div class="col-md-7">
+                                    <input type="text" name =$row['datum'] class="form-control" readOnly>
+                                </div>
+                              </div>";
+                        echo "<div class="row">
+                              <div class="col-md-7">
+                                <input type="text" name =$row['status'] class="form-control" readOnly>
+                              </div>
+                            </div>";
+                        // wenn status = ausgeliehen dann zeige standort mit an
+                        if($row['status'] == "ausgeliehen"){
+                            echo "<div class="row">
+                                    <div class="col-md-7">
+                                        <input type="text" name =$row['standort'] class="form-control" readOnly>
+                                    </div>
+                                  </div>";
+                        }  
+                    }
+                ?>
                 <p></p>
-                    <button type="submit">Registrieren</button>
-                    <p></p>
+                <input type="button" value="Inventar ändern" onClick="window.location.href='Inventar ändern.php'">
                 </form>
             </div>
         </div>
