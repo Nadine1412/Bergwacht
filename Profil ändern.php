@@ -107,7 +107,7 @@ session_start();
                                     <li><a class="active" href="Profil ändern.php">Profil ändern</a></li>
                                 </ul>
                             </li>
-                            <li><a href="Ausbildungen Bergwacht.html">Ausbildung</a>
+                            <li><a href="Ausbildung anzeigen.php">Ausbildung</a>
                                 <ul>
                                     <li><a href="Anwesenheitsliste.php">Anwesenheitsliste</a></li>
                                     <li><a href="Ausbildung anlegen.php">Ausbildung anlegen</a></li>

@@ -129,7 +129,7 @@
                                     <li><a href="Profil ändern.php">Profil ändern</a></li>
                                 </ul>
                             </li>
-                            <li><a href="Ausbildungen Bergwacht.html">Ausbildung</a>
+                            <li><a href="Ausbildung anzeigen.php">Ausbildung</a>
                                 <ul>
                                     <li><a href="Anwesenheitsliste.php">Anwesenheitsliste</a></li>
                                     <li><a href="Ausbildung anlegen.php">Ausbildung anlegen</a></li>
@@ -236,8 +236,8 @@
                                         </div> 
                                         <p></p>");
                                 echo("
-                                    <input type='button' value='Inventar ändern' onClick='window.location.href='Inventar ändern.php''>
-                                    <input type='button' value='Inventar löschen' onClick='window.location.href='Inventar löschen.php''>
+                                    <input type='button' value='Inventar ändern' onClick='window.location.href=\"Inventar ändern.php\"'>
+                                     <input type='button' value='Inventar löschen' onClick='window.location.href=\"Inventar löschen.php\"'>
                                 ");
                            // }  
                     }

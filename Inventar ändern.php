@@ -139,7 +139,7 @@
                                     <li><a href="Profil ändern.php">Profil ändern</a></li>
                                 </ul>
                             </li>
-                            <li><a href="Ausbildungen Bergwacht.html">Ausbildung</a>
+                            <li><a href="Ausbildung anzeigen.php">Ausbildung</a>
                                 <ul>
                                     <li><a href="Anwesenheitsliste.php">Anwesenheitsliste</a></li>
                                     <li><a href="Ausbildung anlegen.php">Ausbildung anlegen</a></li>
@@ -175,8 +175,7 @@
             </div>
             <div class="col-md-6">
                 <form name="changeInventarFormular" method="post" action="changeInventar.php">
-                <legend>Bitte geben Sie eine Materialbezeichnung ein:</legend>
-               
+                               
                 <label>Material-ID:</label>
                     <div class="row">
                         <div class="col-md-7">

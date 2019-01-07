@@ -122,7 +122,7 @@
                                     <li><a href="Profil ändern.php">Profil ändern</a></li>
                                 </ul>
                             </li>
-                            <li><a href="Ausbildungen Bergwacht.html">Ausbildung</a>
+                            <li><a href="Ausbildung anzeigen.php">Ausbildung</a>
                                 <ul>
                                     <li><a href="Anwesenheitsliste.php">Anwesenheitsliste</a></li>
                                     <li><a href="Ausbildung anlegen.php">Ausbildung anlegen</a></li>
@@ -150,9 +150,9 @@
                     
         <section id="container" class="container">
             <br><br><br><br><br><br>
-              <center>  <h2>Ausbildung anzeigen</h2></center> 
+              <center>  <h2>Ausbildungen löschen</h2></center> 
                
-              <center>  <p>Hier können Sie ihre Ausbildungen einsehen und ändern.</p> </center> 
+              <center>  <p>Hier können Sie ihre Ausbildungen aus der Datenbank löschen.</p> </center> 
               <form name="ausbildungloeschenFormular" method="post" action="Ausbildung loeschen verarbeiten.php">
 
               <div style="width:60%;" id="Ausbildungloeschentbl" class="container">
