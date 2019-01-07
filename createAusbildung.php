@@ -1,5 +1,4 @@
 <?php
-$aid = $_POST['aid'];
 $bezeichnung = $_POST['bezeichnung'];
 
 
@@ -30,5 +29,5 @@ $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error()
         header('location: Ausbildung anlegen.php');
         exit();
     }
- } 
+ 
 ?>

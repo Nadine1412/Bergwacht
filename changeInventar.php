@@ -4,16 +4,18 @@
 session_start();
 
 $materialbez = $_POST['matbez'];
-$status = $_POST['status'];
-$datum = $_POST['datum'];
+$status = $_POST['state'];
+$datum = $_POST['date'];
 $standort = $_POST['standort'];
+$sid = $_POST['sid'];
+
 
 
 $_SESSION["matbez"] = $materialbez;
-$_SESSION["userName"] = $status;
-$_SESSION["userBirthday"] = $datum;
-$_SESSION["userEMail"] = $standort;
-
+$_SESSION["sid"]= $sid;
+$_SESSION["standort"]= $standort;
+$_SESSION["datum"]= $datum;
+$_SESSION["status"]= $status;
 
 /* DB Verbindung herstellen */
 define("DB_HOST", "localhost");
@@ -26,10 +28,11 @@ $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error()
 // material in Datenbank updaten
  $query1 = "UPDATE tbl_inventar 
             SET 
-                Status='$status',
-                Datum='$datum',
-                Standort='$standort',
-            WHERE Bezeichnung= '$materialbez'"; 
+            Bezeichnung= '$materialbez',
+            Status='$status',
+            Datum='$datum',
+            Standort='$standort'
+            WHERE S_ID LIKE '$sid'"; 
 
  $check = mysqli_query($db, $query1); //Query ausführen und ergebnis speichern
 
@@ -38,7 +41,6 @@ $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error()
         # Weiterleitung auf die Profil anzeigen Seite;
         header('location: Inventar anzeigen.php');
         exit(1);
-
     }
     else
     {

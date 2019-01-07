@@ -126,7 +126,9 @@
                                 <ul>
                                     <li><a href="Anwesenheitsliste.php">Anwesenheitsliste</a></li>
                                     <li><a href="Ausbildung anzeigen.php">Ausbildung anzeigen</a></li>
-                                    <li><a href="Ausbildung ändern.php">Ausbildung ändern</a></li>
+                                    <li><a href="Ausbildung anlegen.php">Ausbildung anlegen</a></li>
+                                    <li><a href="Ausbildung loeschen.php">Ausbildung löschen</a></li>
+                                    
                                 </ul>
                             </li>
                             <li><a href="Inventar Bergwacht.html">Inventar</a>
@@ -161,6 +163,7 @@
                                 <th>Dauer:</th>
                                 <th>Thema:</th>
                                 <th>Ausbildungs ID:</th>
+                                <th>Ausbildungsbezeichnung:</th>
                                 <th>Ausbilder:</th>
                               </tr>
                               <?php
@@ -184,7 +187,14 @@
                                         $userDauer =  $user_db["Dauer"];
                                         $userThema =  $user_db["Thema"];
                                         $userA_ID =  $user_db["A_ID"];
-                                        $userAusbilder =  $user_db["Ausbilder"];    
+                                        $userAusbilder =  $user_db["Ausbilder"];  
+
+                                        $query2 = "SELECT Ausbildungsbezeichnung FROM tbl_ausbildung WHERE A_ID LIKE '$userA_ID'";
+                                        $result_ausbildung = mysqli_query($db, $query2);
+
+                                        $ausbildung_db = $result_ausbildung->fetch_assoc();
+                                        $userAusbildungsbezeichnung = $ausbildung_db["Ausbildungsbezeichnung"];
+
                                         echo("
                                         <tr>
                                             <td>$userAtID </td>
@@ -192,6 +202,7 @@
                                             <td>$userDauer</td>
                                             <td>$userThema</td>
                                             <td>$userA_ID</td>
+                                            <td>$userAusbildungsbezeichnung</td>
                                             <td>$userAusbilder</td>
                                             </tr>
                                         ");       

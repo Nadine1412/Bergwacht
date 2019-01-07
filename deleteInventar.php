@@ -1,8 +1,5 @@
 <?php
-$materialbez = $_POST['materialbez'];
-$status = $_POST['status'];
-$datum = $_POST['datum'];
-$standort = $_POST['standort'];
+$materialbez = $_POST['matbez'];
 
 /* DB Verbindung herstellen */
 define("DB_HOST", "localhost");
@@ -11,10 +8,10 @@ define("DB_PASSWORD", "");
 define("DB_DATABASE", "bergwacht_db");
 
 $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error());
-
+echo($materialbez);
 // material löschen
- $query1 = "Delete tbl_inventar 
-            WHERE bezeichnung= '$materialbez';"; 
+ $query1 = "DELETE FROM tbl_inventar 
+            WHERE Bezeichnung LIKE '$materialbez'"; 
 
  $check = mysqli_query($db, $query1); //Query ausführen und ergebnis speichern
 
@@ -31,5 +28,5 @@ $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error()
         header('location: Inventar löschen.php');
         exit();
     }
- } 
+
 ?>
