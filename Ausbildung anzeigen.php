@@ -8,6 +8,7 @@
         .navbar{
             width: 100%;
             background-color: #6699cc;
+            z-size: 10;
 
         }
         ul{
@@ -108,6 +109,7 @@
         }
         .container{
             color: rgb(255, 255, 255);
+            z-size: 1;
         }
     </style>
     <body>
@@ -117,27 +119,27 @@
                             <li><a href="Profil anzeigen.php">Profil</a>
                                 <ul>
                                     <li><a href="Profil anzeigen.php">Profil anzeigen</a></li>
-                                    <li><a class="active" href="Profil ändern.php">Profil ändern</a></li>
+                                    <li><a href="Profil ändern.php">Profil ändern</a></li>
                                 </ul>
                             </li>
                             <li><a href="Ausbildungen Bergwacht.html">Ausbildung</a>
                                 <ul>
                                     <li><a href="Anwesenheitsliste.php">Anwesenheitsliste</a></li>
-                                    <li><a href="Ausbildung anzeigen.php">Ausbildung anzeigen</a></li>
-                                    <li><a href="Ausbildung ändern.php">Ausbildung ändern</a></li>
+                                    <li><a href="Ausbildung anlegen.php">Ausbildung anlegen</a></li>
+                                    <li><a class="active" href="Ausbildung anzeigen.php">Ausbildung anzeigen</a></li>
                                 </ul>
                             </li>
                             <li><a href="Inventar Bergwacht.html">Inventar</a>
                                 <ul>
                                     <li><a href="Inventar pflegen.html">Inventar anlegen</a></li>
-                                    <li><a href="Inventar ändern.html">Inventar ändern</a></li>
                                     <li><a href="Inventar anzeigen.php">Inventar anzeigen</a></li>
-                                    <li><a href="Inventar loeschen.html">Inventar löschen</a></li>
+                                    <li><a href="Inventar ändern.php">Inventar ändern</a></li>
+                                    <li><a href="Inventar löschen.php">Inventar löschen</a></li>
                                 </ul>
                             </li>
                             <li><a href="Mitglieder Bergwacht.html">Mitglieder</a></li>
                             <ul>
-                                <li><a href="Mitglied loeschen.html">Mitglied löschen</a></li>
+                                <li><a href="Mitglied loeschen.php">Mitglied löschen</a></li>
                             </ul>
                             <li><a href="Charts Bergwacht.html">Charts</a></li>
                             <li><a href="Kalender Bergwacht.html">Kalender</a></li>
