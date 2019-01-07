@@ -67,7 +67,7 @@
             display: block;
         }
         ul ul ul{
-            left:100
+            left:100;
         }
         body{
             color: rgba(255, 255, 255, 0.16);
@@ -96,9 +96,10 @@
                                     <li><a href="Anwesenheitsliste.php">Anwesenheitsliste</a></li>
                                     <li><a class="active" href="Ausbildung anlegen.php">Ausbildung anlegen</a></li>
                                     <li><a href="Ausbildung anzeigen.php">Ausbildung anzeigen</a></li>
+                                    <li><a href="Ausbildung loeschen.php">Ausbildung löschen</a></li>
                                 </ul>
                             </li>
-                            <li><a href="Inventar Bergwacht.html">Inventar</a>
+                            <li><a href="Inventar anzeigen.php">Inventar</a>
                                 <ul>
                                     <li><a href="Inventar pflegen.html">Inventar anlegen</a></li>
                                     <li><a href="Inventar anzeigen.php">Inventar anzeigen</a></li>
@@ -106,7 +107,7 @@
                                     <li><a href="Inventar löschen.php">Inventar löschen</a></li>
                                 </ul>
                             </li>
-                            <li><a href="Mitglieder Bergwacht.html">Mitglieder</a></li>
+                            <li><a href="Mitglieder Bergwacht.php">Mitglieder</a></li>
                             <ul>
                                 <li><a href="Mitglied loeschen.php">Mitglied löschen</a></li>
                             </ul>

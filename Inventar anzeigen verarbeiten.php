@@ -30,6 +30,7 @@
             .navbar{
             width: 100%;
             background-color: #6699cc;
+            z-index: 10;
 
         }
         ul{
@@ -88,7 +89,7 @@
             display: block;
         }
         ul ul ul{
-            left:100
+            left:100;
         }
             table {
                 font-family: arial, sans-serif;
@@ -114,11 +115,12 @@
             }
             .container{
                 color: rgb(255, 255, 255);
+                z-index: 1;
             }  
             </style>
     </head>
         <body>
-                <div class="navbar">
+        <div class="navbar">
                         <ul>
                             <li><a href="startseite.html">Home</a></li>
                             <li><a href="Profil anzeigen.php">Profil</a>
@@ -129,15 +131,18 @@
                             </li>
                             <li><a href="Ausbildungen Bergwacht.html">Ausbildung</a>
                                 <ul>
-                                    <li><a href="Anwesenheitsliste Bergwacht.html">Anwesenheitsliste</a></li>
+                                    <li><a href="Anwesenheitsliste.php">Anwesenheitsliste</a></li>
+                                    <li><a href="Ausbildung anlegen.php">Ausbildung anlegen</a></li>
+                                    <li><a href="Ausbildung anzeigen.php">Ausbildung anzeigen</a></li>
+                                    <li><a href="Ausbildung loeschen.php">Ausbildung löschen</a></li>
                                 </ul>
                             </li>
-                            <li><a href="Inventar Bergwacht.html">Inventar</a>
+                            <li><a href="Inventar anzeigen.html">Inventar</a>
                                 <ul>
                                     <li><a href="Inventar pflegen.html">Inventar anlegen</a></li>
-                                    <li><a href="Inventar ändern.php">Inventar ändern</a></li>
                                     <li><a class="active" href="Inventar anzeigen.php">Inventar anzeigen</a></li>
-                                    <li><a href="Inventar loeschen.html">Inventar löschen</a></li>
+                                    <li><a href="Inventar ändern.php">Inventar ändern</a></li>
+                                    <li><a href="Inventar löschen.php">Inventar löschen</a></li>
                                 </ul>
                             </li>
                             <li><a href="Mitglieder Bergwacht.php">Mitglieder</a></li>
@@ -148,7 +153,7 @@
                             <li><a href="Kalender Bergwacht.html">Kalender</a></li>
                         </ul>
                         <input type="button" value="Logout" onClick="window.location.href='Anmeldung Bergwacht.html'">
-                    </div>  
+                    </div>
                     
                     
             <section id="container" class="container">
