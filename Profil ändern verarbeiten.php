@@ -10,6 +10,15 @@ $email = $_POST['email'];
 $selectedRole = $_POST['roles'];
 $state = $_POST['state'];
 
+$_SESSION["userName"] = $vorname;
+$_SESSION["userForname"] = $nachname;
+$_SESSION["userBirthday"] = $birthday;
+$_SESSION["userEMail"] = $email;
+$_SESSION["userRoleString"] = $selectedRole;
+$_SESSION["userState"] = $state;
+
+
+
 $password = $_POST['newpassword'];
 
 if(empty($password))

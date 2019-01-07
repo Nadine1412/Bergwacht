@@ -153,7 +153,7 @@
             <div class="container">
             <div class="row">
             
-            <div class="col-md-6" position>
+            <div style="width:60%;" id="Mitgliederloeschentbl"class="container">
                 <?php
                    /* DB Verbindung herstellen */
                     define("DB_HOST", "localhost");
@@ -216,7 +216,7 @@
                 <input type="button" value="Inventar ändern" onClick="window.location.href='Inventar ändern.php'">
                 <input type="button" value="Inventar löschen" onClick="window.location.href='Inventar löschen.php'">
               
-            </div> </center>
+            </div> 
         </div> 
         <br><br><br><br><br><br><br><br><br><br><br><br>
         </section>
