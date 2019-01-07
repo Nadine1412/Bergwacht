@@ -155,6 +155,7 @@
             
             <div class="col-md-6" position>
                 <?php
+                    session_start();
                    /* DB Verbindung herstellen */
                     define("DB_HOST", "localhost");
                     define("DB_USER", "root");
@@ -162,7 +163,7 @@
                     define("DB_DATABASE", "bergwacht_db");
 
                     $matbez = $_POST['matbez'];
-
+                    $_SESSION['matbez'] = $matbez;
                     $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error()); 
                     $query1 = "SELECT * FROM tbl_inventar WHERE Bezeichnung LIKE '$matbez'";
                     $result = mysqli_query($db, $query1);
