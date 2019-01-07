@@ -1,6 +1,6 @@
 <?php
 
-$selectedMid = $_POST["Mitgliedloeschen"];
+$selectedMid = $_POST["Mitgliedloeschenbtn"];
 
 /* DB Verbindung herstellen */
 define("DB_HOST", "localhost");
