@@ -1,3 +1,18 @@
+<?php
+    //Session starten
+    session_start();
+
+    /* DB Verbindung herstellen */
+    define("DB_HOST", "localhost");
+    define("DB_USER", "root");
+    define("DB_PASSWORD", "");
+    define("DB_DATABASE", "bergwacht_db");
+
+    $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error());
+
+?>
+
+
 <!DOCTYPE html>
 <html>
 <meta charset="UTF-8">
@@ -77,65 +92,43 @@
                 <p>Hier können Sie das Material ändern.</p>
             </div>
             <div class="col-md-6">
-                <form name="changeInventar" method="post" action="changeInventar.php">
+                <form name="changeInventarFormular" method="post" action="changeInventar.php">
                 <legend>Bitte geben Sie eine Materialbezeichnung ein:</legend>
-                <?php
-                    session_start();
-                   /* DB Verbindung herstellen */
-                    define("DB_HOST", "localhost");
-                    define("DB_USER", "root");
-                    define("DB_PASSWORD", "");
-                    define("DB_DATABASE", "bergwacht_db");
-
-                    $matbez = $_SESSION['matbez'];
-
-                    $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error()); 
-                    $query1 = "SELECT * FROM tbl_inventar WHERE Bezeichnung LIKE '$matbez'";
-                    $result = mysqli_query($db, $query1);
-
-                    while($row = $result->fetch_assoc())
-                    {
+               
+                <label>Material-ID:</label>
+                    <div class="row">
+                        <div class="col-md-7">
+                            <input type="text" name ="<?php echo($_SESSION["sid"]) ?>" class="form-control" required>
+                        </div>
+                    </div>
+                <label>Material-Bezeichnung:</label>
+                    <div class='row'>
+                        <div class='col-md-7'>
+                            <input type="text" name ="<?php echo($_SESSION["matbez"]) ?>" class="form-control" required>  
+                        </div>
+                    </div>
+                <label>Datum:</label>
+                    <div class='row'>
+                        <div class='col-md-7'>
+                            <input type="text" name ="<?php echo($_SESSION["datum"]) ?>" class="form-control" required>  
+                        </div>
+                    </div>
                         
-                        $sid = $row["S_ID"];
-                        $standort = $row["Standort"];
-                        $datum = $row["Datum"];
-                        $status = $row["Status"];
-                    }
-                      
-                        echo("  <label>Material-ID:</label>
-                                <div class='row'>
-                                 <div class='col-md-7'>
-                                    <input type='text' name ='sid' value='$sid' class='form-control' readOnly>
-                                 </div>
-                             </div>");
-                        echo("  <label>Material-Bezeichnung:</label>
-                                <div class='row'>
-                                    <div class='col-md-7'>
-                                        <input type='text' name ='matbez' value='$matbez' class='form-control' readOnly>
-                                    </div>
-                                </div>");
-                        echo("  <label>Datum:</label>
-                                <div class='row'>
-                                    <div class='col-md-7'>
-                                        <input type='text' name ='datum' value='$datum' class='form-control' required>
-                                    </div>
-                              </div>");
+                <label>Status:</label>
+                    <div class='row'>
+                        <div class='col-md-7'>
+                            <input type="text" name ="<?php echo($_SESSION["status"]) ?>" class="form-control" required>
+                        </div>
+                    </div>
                         
-                        echo("  <label>Status:</label>
-                                <div class='row'>
-                                <div class='col-md-7'>
-                                <input type='text' name ='status' value='$status' class='form-control' required>
-                                </div>
-                                </div>");
-                        // wenn status = ausgeliehen dann zeige standort mit an
-                        //if($row['status'] == "ausgeliehen"){
-                            echo("  <label>Standort:</label>
-                                    <div class='row'>
-                                    <div class='col-md-7'>
-                                    <input type='text' name ='standort' value='$standort' class='form-control' required>
-                                    </div>
-                                    </div>");                   
-                ?>
+                <label>Standort:</label>
+                    <div class='row'>
+                        <div class='col-md-7'>
+                            <input type="text" name ="<?php echo($_SESSION["standort"]) ?>" class="form-control" required>  
+                        </div>
+                    </div>    
+
+
                 <p></p>
                 <button type='submit'>Änderungen speichern</button>
                 </form>

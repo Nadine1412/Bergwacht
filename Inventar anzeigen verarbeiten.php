@@ -1,3 +1,9 @@
+<?php
+//Session starten
+                session_start();
+?>
+
+
 <!DOCTYPE html>
 <html>
 <meta charset="UTF-8">
@@ -153,17 +159,17 @@
             <div class="container">
             <div class="row">
             
-            <div style="width:60%;" id="Mitgliederloeschentbl"class="container">
+            <div style="width:60%;" id="Inventaraendern"class="container">
                 <?php
-                    session_start();
+                    
                    /* DB Verbindung herstellen */
                     define("DB_HOST", "localhost");
                     define("DB_USER", "root");
                     define("DB_PASSWORD", "");
                     define("DB_DATABASE", "bergwacht_db");
 
-                    $matbez = $_POST['matbez'];
-                    $_SESSION['matbez'] = $matbez;
+                    $matbez = $_POST["matbez"];
+                    $_SESSION["matbez"] = $matbez;
                     $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error()); 
                     $query1 = "SELECT * FROM tbl_inventar WHERE Bezeichnung LIKE '$matbez'";
                     $result = mysqli_query($db, $query1);
@@ -175,7 +181,13 @@
                         $standort = $row["Standort"];
                         $datum = $row["Datum"];
                         $status = $row["Status"];
+
+                        $_SESSION["standort"]= $standort;
+                        $_SESSION["datum"]= $datum;
+                        $_SESSION["status"]= $status;
                     }
+
+
                       
                         echo("  <label>Material-ID:</label>
                                 <div class='row'>
@@ -207,7 +219,7 @@
                             echo("  <label>Standort:</label>
                                     <div class='row'>
                                     <div class='col-md-7'>
-                                    <input type='text' name ='standort' value='$status' class='form-control' readOnly>
+                                    <input type='text' name ='standort' value='$standort' class='form-control' readOnly>
                                     </div>
                                     </div>");
                        // }  
