@@ -98,33 +98,46 @@
                 <label>Material-ID:</label>
                     <div class="row">
                         <div class="col-md-7">
-                            <input type="text" name ="<?php echo($_SESSION["sid"]) ?>" class="form-control" required>
+                            <input type="text" name="sid" value ="<?php echo($_SESSION["sid"]) ?>" class="form-control" readonly>
                         </div>
                     </div>
                 <label>Material-Bezeichnung:</label>
                     <div class='row'>
                         <div class='col-md-7'>
-                            <input type="text" name ="<?php echo($_SESSION["matbez"]) ?>" class="form-control" required>  
+                            <input type="text" name="matbez" value ="<?php echo($_SESSION["matbez"]) ?>" class="form-control" required>  
                         </div>
                     </div>
                 <label>Datum:</label>
                     <div class='row'>
                         <div class='col-md-7'>
-                            <input type="text" name ="<?php echo($_SESSION["datum"]) ?>" class="form-control" required>  
+                            <input type="date" name="date" value ="<?php echo($_SESSION["datum"]) ?>" class="form-control" required>  
                         </div>
                     </div>
-                        
-                <label>Status:</label>
-                    <div class='row'>
-                        <div class='col-md-7'>
-                            <input type="text" name ="<?php echo($_SESSION["status"]) ?>" class="form-control" required>
-                        </div>
+                <label>Status :*</label>
+                <div class="row">
+                    <div class="col-md-7">
+                        <?php 
+                            if($_SESSION["status"] == "ausgeliehen")
+                            {
+                                echo "<select name='state' class='form-control'>
+                                <option value='ausgeliehen' selected>ausgeliehen</option>
+                                <option value='nicht ausgeliehen'>nicht ausgeliehen</option>
+                                </select>";
+                            }
+                            else
+                            {
+                                echo "<select name='state' class='form-control'>
+                                <option value='ausgeliehen' >ausgeliehen</option>
+                                <option value='nicht ausgeliehen' selected>nicht ausgeliehen</option>
+                                </select>";
+                            }
+                        ?>
                     </div>
-                        
+                </div>                           
                 <label>Standort:</label>
                     <div class='row'>
                         <div class='col-md-7'>
-                            <input type="text" name ="<?php echo($_SESSION["standort"]) ?>" class="form-control" required>  
+                            <input type="text" name="standort" value ="<?php echo($_SESSION["standort"]) ?>" class="form-control" required>  
                         </div>
                     </div>    
 

@@ -151,7 +151,7 @@
                     </div>  
                     
                     
-                <section id="container" class="container">
+            <section id="container" class="container">
             <br><br><br><br><br><br>
 
             <center> <h2>Inventar anzeigen</h2> </center>
@@ -161,74 +161,86 @@
             
             <div style="width:60%;" id="Inventaraendern"class="container">
                 <?php
-                    
+                    $matbez = $_POST["matbez"];
+                    $_SESSION["matbez"] = $matbez;
+
                    /* DB Verbindung herstellen */
                     define("DB_HOST", "localhost");
                     define("DB_USER", "root");
                     define("DB_PASSWORD", "");
                     define("DB_DATABASE", "bergwacht_db");
 
-                    $matbez = $_POST["matbez"];
-                    $_SESSION["matbez"] = $matbez;
                     $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error()); 
                     $query1 = "SELECT * FROM tbl_inventar WHERE Bezeichnung LIKE '$matbez'";
                     $result = mysqli_query($db, $query1);
-
-                    while($row = $result->fetch_assoc())
+                    // Check ob Material vorhanden oder nicht
+                    if($result->num_rows == 0)
                     {
-                        
-                        $sid = $row["S_ID"];
-                        $standort = $row["Standort"];
-                        $datum = $row["Datum"];
-                        $status = $row["Status"];
-
-                        $_SESSION["standort"]= $standort;
-                        $_SESSION["datum"]= $datum;
-                        $_SESSION["status"]= $status;
+                        // Ausgabe Material nicht vorhanden
+                        echo '<script language="javascript">';
+                        echo 'alert("Material nicht vorhanden oder falsche Bezeichnung angegeben.")';
+                        echo '</script>';
                     }
-
-
-                      
-                        echo("  <label>Material-ID:</label>
-                                <div class='row'>
-                                 <div class='col-md-7'>
-                                    <input type='text' name ='sid' value='$sid' class='form-control' readOnly>
-                                 </div>
-                             </div>");
-                        echo("  <label>Material-Bezeichnung:</label>
-                                <div class='row'>
-                                    <div class='col-md-7'>
-                                        <input type='text' name ='matbez' value='$matbez' class='form-control' readOnly>
-                                    </div>
-                                </div>");
-                        echo("  <label>Datum:</label>
-                                <div class='row'>
-                                    <div class='col-md-7'>
-                                        <input type='text' name ='datum' value='$datum' class='form-control' readOnly>
-                                    </div>
-                              </div>");
-                        
-                        echo("  <label>Status:</label>
-                                <div class='row'>
-                                <div class='col-md-7'>
-                                <input type='text' name ='status' value='$status' class='form-control' readOnly>
-                                </div>
-                                </div>");
-                        // wenn status = ausgeliehen dann zeige standort mit an
-                        //if($row['status'] == "ausgeliehen"){
-                            echo("  <label>Standort:</label>
+                    else{
+                        // Material vorhanden
+                        while($row = $result->fetch_assoc())
+                        {
+                            
+                            $sid = $row["S_ID"];
+                            $standort = $row["Standort"];
+                            $datum = $row["Datum"];
+                            $status = $row["Status"];
+                            $_SESSION["sid"]= $sid;
+                            $_SESSION["standort"]= $standort;
+                            $_SESSION["datum"]= $datum;
+                            $_SESSION["status"]= $status;
+                        }
+                            
+                            echo("  <label>Material-ID:</label>
+                                    <div class='row'>
+                                     <div class='col-md-7'>
+                                        <input type='text' name ='sid' value='$sid' class='form-control' readOnly>
+                                     </div>
+                                 </div>");
+                            echo("  <label>Material-Bezeichnung:</label>
+                                    <div class='row'>
+                                        <div class='col-md-7'>
+                                            <input type='text' name ='matbez' value='$matbez' class='form-control' readOnly>
+                                        </div>
+                                    </div>");
+                            echo("  <label>Datum:</label>
+                                    <div class='row'>
+                                        <div class='col-md-7'>
+                                            <input type='text' name ='datum' value='$datum' class='form-control' readOnly>
+                                        </div>
+                                  </div>");
+                            
+                            echo("  <label>Status:</label>
                                     <div class='row'>
                                     <div class='col-md-7'>
-                                    <input type='text' name ='standort' value='$standort' class='form-control' readOnly>
+                                    <input type='text' name ='status' value='$status' class='form-control' readOnly>
                                     </div>
                                     </div>");
-                       // }  
-                    
+                            // wenn status = ausgeliehen dann zeige standort mit an
+                            //if($row['status'] == "ausgeliehen"){
+                                echo("  <label>Standort:</label>
+                                        <div class='row'>
+                                        <div class='col-md-7'>
+                                        <input type='text' name ='standort' value='$standort' class='form-control' readOnly>
+                                        </div>
+                                        </div> 
+                                        <p></p>");
+                                echo("
+                                    <input type='button' value='Inventar ändern' onClick='window.location.href='Inventar ändern.php''>
+                                    <input type='button' value='Inventar löschen' onClick='window.location.href='Inventar löschen.php''>
+                                ");
+                           // }  
+                    }
                 ?>
                 <p></p>
-                <input type="button" value="Inventar ändern" onClick="window.location.href='Inventar ändern.php'">
-                <input type="button" value="Inventar löschen" onClick="window.location.href='Inventar löschen.php'">
-              
+                <input type="button" value="Zurück" onClick="window.location.href='Inventar anzeigen.php'">
+                
+                        
             </div> 
         </div> 
         <br><br><br><br><br><br><br><br><br><br><br><br>

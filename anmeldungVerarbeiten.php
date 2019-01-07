@@ -73,7 +73,7 @@ if ($result->num_rows != 0)
 
 
 
-        header('location: Charts Bergwacht.html');
+        header('location: startseite.html');
         echo "Passwort korrekt.";
     } else {
         //Passwort war falsch.
