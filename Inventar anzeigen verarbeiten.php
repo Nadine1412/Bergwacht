@@ -153,7 +153,7 @@
             <div class="container">
             <div class="row">
             
-            <div class="col-md-6">
+            <div class="col-md-6" position>
                 <?php
                    /* DB Verbindung herstellen */
                     define("DB_HOST", "localhost");
