@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html>
 <meta charset="UTF-8">
@@ -209,11 +208,9 @@
                                     }
                                 ?>  
                          </table>
-          
+                         
                     <p></p>
-                <input type="button" value="PDF Export" onClick="window.location.href='Profil ändern.php'">
-
-        </div>
+                <input type="button" value="PDF Export" onClick="window.location.href='dompdf1.php'">
         <br><br><br><br><br><br><br><br><br><br><br><br>
         </section>
 </body>
