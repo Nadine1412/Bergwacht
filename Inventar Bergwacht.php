@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
 <meta charset="UTF-8">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.js"></script>
 <link rel="Stylesheet" type="text/css" href="bootstrap.css">
-<link rel="Stylesheet" type="text/css" href="style.css">
+<head> 
 <head>
-        <title>Inventar anzeigen</title>
-        <style>
+    <title>Inventar</title>
+    <style>
             table {
                 font-family: arial, sans-serif;
                 border-collapse: collapse;
@@ -118,7 +119,7 @@
                             <li><a href="Profil anzeigen.php">Profil</a>
                                 <ul>
                                     <li><a href="Profil anzeigen.php">Profil anzeigen</a></li>
-                                    <li><a href="Profil ändern.php">Profil ändern</a></li>
+                                    <li><a class="active" href="Profil ändern.php">Profil ändern</a></li>
                                 </ul>
                             </li>
                             <li><a href="Ausbildungen Bergwacht.html">Ausbildung</a>
@@ -129,8 +130,8 @@
                             <li><a href="Inventar Bergwacht.html">Inventar</a>
                                 <ul>
                                     <li><a href="Inventar pflegen.html">Inventar anlegen</a></li>
-                                    <li><a href="Inventar ändern.php">Inventar ändern</a></li>
-                                    <li><a class="active" href="Inventar anzeigen.php">Inventar anzeigen</a></li>
+                                    <li><a href="Inventar ändern.html">Inventar ändern</a></li>
+                                    <li><a href="Inventar anzeigen.php">Inventar anzeigen</a></li>
                                     <li><a href="Inventar loeschen.html">Inventar löschen</a></li>
                                 </ul>
                             </li>
@@ -145,77 +146,66 @@
                     </div>            
                 <section id="container" class="container">
             <br><br><br><br><br><br>
-            <div class="container">
-            <div class="row">
-            <div class="col-md-6">
-                <h2>Inventar anzeigen</h2>
-               
-                <p>Hier können Sie ein bestimmtes Material ansehen.</p>
-            </div>
-            <div class="col-md-6">
-               <!-- <form name="inventarLaden" method="post" action="inventarLaden.php"> -->
-                <legend>Bitte geben Sie eine Materialbezeichnung ein:</legend>
-                <label>Materialbezeichnung :*</label>
-                <div class="row">
-                    <div class="col-md-7">
-                        <input type="text" name = "matbez" class="form-control" required>
-                    </div>
+            <center><h2>Inventar</h2></center>
+            <p></p>
+            <div style="width:60%;" class="container">
+                    
+                            <body>
+                                                        
+                            <table>
+                              <tr>
+                                <th>Bezeichnung</th>
+                                <th>MID</th>
+                                <th>SID</th>
+                                <th>Datum</th>
+                                <th>Status</th>
+                              </tr>
+                              <tr>
+                                <td>NULL</td>
+                                <td>NULL</td>
+                                <td>NULL</td>
+                                <td>NULL</td>
+                                <td>NULL</td>
+                              </tr>
+                              <tr>
+                                    <td>NULL</td>
+                                    <td>NULL</td>
+                                    <td>NULL</td>
+                                    <td>NULL</td>
+                                    <td>NULL</td>
+                              </tr>
+                              <tr>
+                                    <td>NULL</td>
+                                    <td>NULL</td>
+                                    <td>NULL</td>
+                                    <td>NULL</td>
+                                    <td>NULL</td>
+                              </tr>
+                              <tr>
+                                    <td>NULL</td>
+                                    <td>NULL</td>
+                                    <td>NULL</td>
+                                    <td>NULL</td>
+                                    <td>NULL</td>
+                              </tr>
+                              <tr>
+                                    <td>NULL</td>
+                                    <td>NULL</td>
+                                    <td>NULL</td>
+                                    <td>NULL</td>
+                                    <td>NULL</td>
+                              </tr>
+                              <tr>
+                                    <td>NULL</td>
+                                    <td>NULL</td>
+                                    <td>NULL</td>
+                                    <td>NULL</td>
+                                    <td>NULL</td>
+                              </tr>
+                            </table>
                 </div>
-                <?php
-                  //Session starten
-                  session_start();
-                   /* DB Verbindung herstellen */
-                    define("DB_HOST", "localhost");
-                    define("DB_USER", "root");
-                    define("DB_PASSWORD", "");
-                    define("DB_DATABASE", "bergwacht_db");
-
-                    $matbez = $_POST['matbez'];
-                    $_SESSION["matbez"] = $matbez;
-
-                    $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error()); 
-                    $query1 = "SELECT * FROM tbl_inventar WHERE bezeichnung LIKE '$matbez'";
-                    $result = mysqli_query($db, $query1);
-
-                    while($row = $result->fetch_assoc())
-                    {
-                        $standort = $row["standort"];
-                        $datum = $row["datum"];
-                        $status = $row["status"];
-                    }
-                      
-                        echo("<div class="row">
-                                 <div class="col-md-7">
-                                    <input type="text" name ="matbez" value="$matbez" class="form-control" readOnly>
-                                 </div>
-                             </div>");
-                        echo("<div class="row">
-                                <div class="col-md-7">
-                                    <input type="text" name ="datum" value=$datum class="form-control" readOnly>
-                                </div>
-                              </div>");
-                        echo("<div class="row">
-                              <div class="col-md-7">
-                                <input type="text" name ="status" value="$status" class="form-control" readOnly>
-                              </div>
-                            </div>");
-                        // wenn status = ausgeliehen dann zeige standort mit an
-                        //if($row['status'] == "ausgeliehen"){
-                            echo("<div class="row">
-                                    <div class="col-md-7">
-                                        <input type="text" name ="standort" value="$status" class="form-control" readOnly>
-                                    </div>
-                                  </div>");
-                       // }  
-                    }
-                ?>
-                <p></p>
-                <input type="button" value="Inventar ändern" onClick="window.location.href='Inventar ändern.php'">
-                <input type="button" value="Inventar löschen" onClick="window.location.href='Inventar löschen.php'">
-              <!--  </form> -->
-            </div>
-        </div>
-        <br><br><br><br><br><br><br><br><br><br><br><br>
-        </section>
-        </body>
+                <br><br>
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                </section>
+    </body>
 </html>
