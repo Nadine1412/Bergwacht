@@ -225,10 +225,10 @@
                             </table>
                 </div>
                 </form>
-                <div style="width:60%;" id="KeinAdmin"class="container">
+            <div style="width:60%;" id="KeinAdmin"class="container">
                 Sie haben keine Admin-Rechte und können keine Mitglieder löschen.
-                                    </div>
-                <script type="text/javascript">
+            </div>
+        <script type="text/javascript">
            var rolle = "<?php echo($_SESSION['userRoleString']);?>";
            var table = document.getElementById("Mitgliederloeschentbl");
            var unauthorised = document.getElementById("KeinAdmin");

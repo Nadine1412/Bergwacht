@@ -146,14 +146,12 @@
                         </ul>
                         <input type="button" value="Logout" onClick="window.location.href='Anmeldung Bergwacht.html'">
                     </div>      
+                    
             <section id="container" class="container">
             <br><br><br><br><br><br>
             <center><h2>Mitglieder</h2></center>
             <p></p>
-            <div style="width:60%;" class="container">
-                    
-                            <body>
-                                                        
+            <div style="width:60%;" class="container">                                                                         
                             <table>
                               <tr>
                                 <th>M_ID</th>

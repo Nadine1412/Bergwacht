@@ -150,12 +150,15 @@
               <center>  <h2>Ausbildung anzeigen</h2></center> 
                
               <center>  <p>Hier können Sie ihre Ausbildungen einsehen und ändern.</p> </center> 
-              <div style="width:60%;" class="container">
+              <form name="ausbildungloeschenFormular" method="post" action="Ausbildung loeschen verarbeiten.php">
 
-        <table>
+              <div style="width:60%;" id="Ausbildungloeschentbl" class="container">
+
+                 <table>
                               <tr>
                                 <th>Ausbildungs-ID:</th>
                                 <th>Bezeichnung:</th>
+                                <th>Löschen:</th>
                               </tr>
                               <?php
                                     /* DB Verbindung herstellen */
@@ -179,14 +182,33 @@
                                         <tr>
                                             <td>$a_id </td>
                                             <td>$ausbildungsbezeichnung</td>
+                                            <td><button type='submit' name='Ausbildungloeschen' value='$a_id'>Löschen</button></td>
                                             </tr>
                                         ");       
                                     }
                                 ?>  
                          </table>
                          <p></p>
-                <input type="button" value="Ausbildung anlegen" onClick="window.location.href='Ausbildung anlegen.php'">
-                <input type="button" value="Ausbildung löschen" onClick="window.location.href='Ausbildung loeschen.php'">
+                         </form>
+            <!-- <div style="width:60%;" id="KeinAdmin"class="container">
+                Sie haben keine Admin-Rechte und können keine Mitglieder löschen.
+            </div> 
+         <script type="text/javascript">
+           var rolle = "<?php echo($_SESSION['userRoleString']);?>";
+           var table = document.getElementById("Mitgliederloeschentbl");
+           var unauthorised = document.getElementById("KeinAdmin");
+
+           if(rolle == "Anwaerter" || rolle == "Ausbilder")
+           {
+                table.hidden=false;
+                unauthorised.hidden=true;
+           }
+           else
+           {
+                table.hidden=true;
+                unauthorised.hidden=false;
+           }
+        </script> -->
         </section>
 
         
