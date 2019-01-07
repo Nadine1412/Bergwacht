@@ -10,8 +10,8 @@ $email = $_POST['email'];
 $selectedRole = $_POST['roles'];
 $state = $_POST['state'];
 
-$_SESSION["userName"] = $vorname;
-$_SESSION["userForname"] = $nachname;
+$_SESSION["userForname"] = $vorname;
+$_SESSION["userName"] = $nachname;
 $_SESSION["userBirthday"] = $birthday;
 $_SESSION["userEMail"] = $email;
 $_SESSION["userRoleString"] = $selectedRole;
