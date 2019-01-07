@@ -1,5 +1,5 @@
 <?php
-$materialbez = $_POST['materialbez'];
+$materialbez = $_POST['matbez'];
 $status = $_POST['status'];
 $datum = $_POST['datum'];
 $standort = $_POST['standort'];
@@ -14,10 +14,10 @@ $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error()
 
 // material updaten
  $query1 = "UPDATE tbl_inventar 
-            SET status='$status',
-                datum=$datum,
-                standort=$standort
-            WHERE bezeichnung= '$materialbez'"; 
+            SET Status='$status',
+                Datum=$datum,
+                Standort=$standort
+            WHERE Bezeichnung= '$matbez'"; 
 
  $check = mysqli_query($db, $query1); //Query ausführen und ergebnis speichern
 
