@@ -216,7 +216,7 @@
                                                 <td>$eMail</td>
                                                 <td>$roleString</td>
                                                 <td>$state</td>
-                                                <td><button type='submit' name='Mitgliedloeschen' value='$mID'>Löschen</button></td>
+                                                <td><button type='submit' name='Mitgliedloeschenbtn' value='$mID'>Löschen</button></td>
                                             </tr>");
                                         }
                                         

@@ -142,32 +142,88 @@
                             <li><a href="Kalender Bergwacht.html">Kalender</a></li>
                         </ul>
                         <input type="button" value="Logout" onClick="window.location.href='Anmeldung Bergwacht.html'">
-                    </div>            
+                    </div>  
+                    
+                    
                 <section id="container" class="container">
             <br><br><br><br><br><br>
+
+            <center> <h2>Inventar anzeigen</h2> </center>
+            <p></p>
             <div class="container">
             <div class="row">
+            
             <div class="col-md-6">
-                <h2>Inventar anzeigen</h2>
-               
-                <p>Hier können Sie ein bestimmtes Material ansehen.</p>
-            </div>
-            <div class="col-md-6">
-               <form name="inventarLaden" method="post" action="Inventar anzeigen verarbeiten.php">
-                <legend>Bitte geben Sie eine Materialbezeichnung ein:</legend>
-                <label>Materialbezeichnung :*</label>
-                <div class="row">
-                    <div class="col-md-7">
-                        <input type="text" name = "matbez" class="form-control" required>
-                    </div>
-                    <button type="submit" >Auswahl anzeigen</button>
-                </div>
-                </form>
+                <?php
+                   /* DB Verbindung herstellen */
+                    define("DB_HOST", "localhost");
+                    define("DB_USER", "root");
+                    define("DB_PASSWORD", "");
+                    define("DB_DATABASE", "bergwacht_db");
 
+                    $matbez = $_POST['matbez'];
+
+                    $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error()); 
+                    $query1 = "SELECT * FROM tbl_inventar WHERE Bezeichnung LIKE '$matbez'";
+                    $result = mysqli_query($db, $query1);
+
+                    while($row = $result->fetch_assoc())
+                    {
+                        
+                        $sid = $row["S_ID"];
+                        $standort = $row["Standort"];
+                        $datum = $row["Datum"];
+                        $status = $row["Status"];
+                    }
+                      
+                        echo("  <label>Material-ID:</label>
+                                <div class='row'>
+                                 <div class='col-md-7'>
+                                    <input type='text' name ='sid' value='$sid' class='form-control' readOnly>
+                                 </div>
+                             </div>");
+                        echo("  <label>Material-Bezeichnung:</label>
+                                <div class='row'>
+                                    <div class='col-md-7'>
+                                        <input type='text' name ='matbez' value='$matbez' class='form-control' readOnly>
+                                    </div>
+                                </div>");
+                        echo("  <label>Datum:</label>
+                                <div class='row'>
+                                    <div class='col-md-7'>
+                                        <input type='text' name ='datum' value='$datum' class='form-control' readOnly>
+                                    </div>
+                              </div>");
+                        
+                        echo("  <label>Status:</label>
+                                <div class='row'>
+                                <div class='col-md-7'>
+                                <input type='text' name ='status' value='$status' class='form-control' readOnly>
+                                </div>
+                                </div>");
+                        // wenn status = ausgeliehen dann zeige standort mit an
+                        //if($row['status'] == "ausgeliehen"){
+                            echo("  <label>Standort:</label>
+                                    <div class='row'>
+                                    <div class='col-md-7'>
+                                    <input type='text' name ='standort' value='$status' class='form-control' readOnly>
+                                    </div>
+                                    </div>");
+                       // }  
+                    
+                ?>
+                <p></p>
+                <input type="button" value="Inventar ändern" onClick="window.location.href='Inventar ändern.php'">
+                <input type="button" value="Inventar löschen" onClick="window.location.href='Inventar löschen.php'">
               
-            </div>
-        </div>
+            </div> </center>
+        </div> 
         <br><br><br><br><br><br><br><br><br><br><br><br>
         </section>
         </body>
 </html>
+
+
+
+
+
